@@ -1,23 +1,26 @@
 $(function () {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-  // locomotive-scroll 초기화
-  const scrollContainer = document.querySelector("[data-scroll-container]");
-  const scroll = new LocomotiveScroll({
-    el: scrollContainer,
-    smooth: true,
-  });
+
 
   let isScrolling = false;
-  const sections = document.querySelectorAll('section');
+  let scrollCooldown = false;
+  let isHorizontalScrolling = false;
+  const sections = document.querySelectorAll("section");
   let currentIndex = 0;
 
   function scrollToSection(index) {
-    const isInHorizontal = document.querySelector('#work').getBoundingClientRect().top <= 0 &&
-      document.querySelector('#work').getBoundingClientRect().bottom > 0;
-    if (isInHorizontal) return; // 가로 스크롤 중일 때는 section 이동 안 함
+    if (scrollCooldown) return;
+
+    const horizontalTrigger = ScrollTrigger.getById("work-horizontal");
+    const isInHorizontal = horizontalTrigger && horizontalTrigger.isActive;
+
+    if (isInHorizontal) return;
+
     if (index >= 0 && index < sections.length) {
       isScrolling = true;
+      scrollCooldown = true;
+
       scroll.scrollTo(sections[index], {
         offset: 0,
         duration: 1000,
@@ -25,54 +28,35 @@ $(function () {
         callback: () => {
           isScrolling = false;
           currentIndex = index;
-        }
-      })
+          setTimeout(() => {
+            scrollCooldown = false;
+          }, 1200);
+        },
+      });
     }
   }
 
-  const horizontalTrigger = ScrollTrigger.getById("work-horizontal");
+  window.addEventListener("wheel", (e) => {
+    const horizontalTrigger = ScrollTrigger.getById("work-horizontal");
+    const workWrapper = document.querySelector("#work .horizontal-wrapper");
 
-  if (horizontalTrigger && horizontalTrigger.isActive) return;
+    const isPinned =
+      horizontalTrigger &&
+      horizontalTrigger.pin === workWrapper &&
+      horizontalTrigger.isActive;
 
-  //휠 감지 ->섹션이동
-  window.addEventListener('wheel', (e) => {
-    if (isScrolling) return;
+    if (isScrolling || scrollCooldown || isPinned) return;
+
     if (e.deltaY > 50) {
-      //스크롤 아래
       scrollToSection(currentIndex + 1);
     } else if (e.deltaY < -50) {
-      //스크롤 위
       scrollToSection(currentIndex - 1);
     }
-  })
-
-
-  //연결
-  scroll.on("scroll", ScrollTrigger.update);
-
-  ScrollTrigger.scrollerProxy(scrollContainer, {
-    scrollTop(value) {
-      return arguments.length
-        ? scroll.scrollTo(value, 0, 0)
-        : scroll.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-    pinType: "transform",
   });
 
 
 
-  //snap 설정
-  ScrollTrigger.defaults({
-    scroller: scrollContainer,
-  });
+
 
   gsap.utils.toArray("section").forEach((panel, i) => {
     ScrollTrigger.create({
@@ -83,21 +67,44 @@ $(function () {
     });
   });
 
-  ScrollTrigger.addEventListener("refresh", () => scroll.update());
-  ScrollTrigger.refresh();
 
-  //커스텀커서
-  const cursor2 = document.querySelector('.custom_cursor2');
 
-  document.addEventListener('mousemove', (e) => {
+  // ⭐ 가로 스크롤 설정
+  const hor = document.querySelector("#work");
+  const workWrapper = document.querySelector("#work .horizontal-wrapper");
+  const workli = gsap.utils.toArray("#work .horizontal-wrapper .workli");
+
+  const scrollLength = workWrapper.scrollWidth - window.innerWidth;
+
+  gsap.to(workWrapper, {
+    x: () => -scrollLength,
+    ease: "none",
+    scrollTrigger: {
+      id: "work-horizontal",
+      trigger: hor,
+      start: "top top",
+      end: () => "+=" + scrollLength,
+      pin: true,
+      scrub: 2.5,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onEnter: () => isHorizontalScrolling = true,
+      onLeave: () => isHorizontalScrolling = false,
+      onLeaveBack: () => isHorizontalScrolling = false,
+    },
+  });
+
+  // 🎨 커스텀 커서
+  const cursor2 = document.querySelector(".custom_cursor2");
+  document.addEventListener("mousemove", (e) => {
     cursor2.style.left = `${e.clientX}px`;
     cursor2.style.top = `${e.clientY}px`;
     createStarTrail(e.clientX, e.clientY);
   });
 
   function createStarTrail(x, y) {
-    const trail = document.createElement('img');
-    trail.classList.add('star-trail-svg');
+    const trail = document.createElement("img");
+    trail.classList.add("star-trail-svg");
     document.body.appendChild(trail);
 
     const offsetX = (Math.random() - 0.5) * 40;
@@ -108,37 +115,32 @@ $(function () {
     trail.style.top = `${y + offsetY}px`;
     trail.style.transform = `translate(-50%, -50%) scale(${scale})`;
 
-    // 애니메이션 설정
     gsap.to(trail, {
-      left: `${x + (Math.random() - 0.5) * 5}px`, // x 좌표 이동
-      top: `${y + (Math.random() - 0.5) * 5}px`,  // y 좌표 이동
+      left: `${x + (Math.random() - 0.5) * 5}px`,
+      top: `${y + (Math.random() - 0.5) * 5}px`,
       opacity: 0,
       duration: 0.8 + Math.random() * 0.5,
       ease: "power1.out",
       onComplete: () => {
-        trail.remove();  // 애니메이션 끝난 후 제거
-      }
+        trail.remove();
+      },
     });
   }
-  document.querySelectorAll('a, button, .lottie-hover-zone').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor2.classList.add('hover'));
-    el.addEventListener('mouseleave', () => cursor2.classList.remove('hover'));
+
+  document.querySelectorAll("a, button, .lottie-hover-zone").forEach((el) => {
+    el.addEventListener("mouseenter", () => cursor2.classList.add("hover"));
+    el.addEventListener("mouseleave", () => cursor2.classList.remove("hover"));
   });
 
-
-  //scrolltop
-  document.querySelector('.goback a').addEventListener('click', function (e) {
-    e.preventDefault(); // 기본 이동 막기
-  
+  // 🔝 scroll to top
+  document.querySelector(".goback a").addEventListener("click", function (e) {
+    e.preventDefault();
     scroll.scrollTo(0, {
       duration: 1000,
       easing: [0.25, 0.0, 0.35, 1.0],
     });
-  
   });
 
-
-  //이미지 배치
   gsap.from("#main .top, #main .top img", {
     scrollTrigger: {
       trigger: "#main",
@@ -158,8 +160,6 @@ $(function () {
     duration: 3,
     ease: "expo.out"
   })
-
-
   // STAR 흔들림 + 트레일
   let star = document.querySelector('.star');
   const aboutSection = document.querySelector('#main');
@@ -303,32 +303,6 @@ $(function () {
     }
   });
 
-  //가로스크롤
-
-  const hor = document.querySelector('#work .horizontal-wrapper');
-  const workli = gsap.utils.toArray('#work .horizontal-wrapper .workli');
-
-  gsap.to(workli, {
-    xPercent: -100 * (workli.length - 1),
-    ease: "none",
-    scrollTrigger: {
-      id: "work-horizontal", 
-      trigger: hor,
-      start: "top top",
-      end: () => "+=" + hor.scrollWidth,
-      scroller: scrollContainer,
-      pin: true,
-      scrub: 1,
-      snap: {
-        snapTo: 1 / (workli.length - 1),
-        inertia: false,
-        duration: { min: 0.2, max: 0.6 },
-      },
-      invalidateOnRefresh: true,
-      anticipatePin: 1,
-    },
-  })
-
 
   // 텍스트 요소들 순차 등장 애니메이션
   gsap.utils.toArray('#about .txt').forEach((txtEl, i) => {
@@ -395,23 +369,22 @@ $(function () {
     ease: "power2.out",
   });
 
-  gsap.from("#contact .cont_txt .bottom", {
-    scrollTrigger: {
-      trigger: "#contact",
-      start: "top 100%",
-      scrub: true,
-    },
-    x: -400,
-    delay: 1,
-    duration: 3.5,
-    ease: "power2.out",
+  document.querySelector('.goback a').addEventListener('click', function (e) {
+    e.preventDefault(); // 기본 이동 막기
+  
+    if (typeof scroll !== 'undefined' && typeof scroll.scrollTo === 'function') {
+      // 🚀 Locomotive Scroll이 있는 경우
+      scroll.scrollTo(0, {
+        duration: 1000,
+        easing: [0.25, 0.0, 0.35, 1.0],
+      });
+    } else {
+      // ✨ 일반 브라우저 스크롤
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   });
-
-  window.addEventListener("load", () => {
-    scroll.update();
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
-  });
-
+ 
 });

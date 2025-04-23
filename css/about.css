@@ -308,6 +308,8 @@ section {
 #resume {
     position: relative;
     overflow: visible;
+    padding-bottom: 0 !important; /* ✅ 공백 유발할 수 있는 요소 제거 */
+    margin-bottom: 0 !important;
 }
 
 #resume .skill {
@@ -491,20 +493,20 @@ section {
 }
 
 #work{
-    overflow: hidden;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-top: 20vh;
-    justify-content: flex-start;
-    gap: 5vh;
-    min-height: 450vh;
+/*     display: flex;
+    flex-direction: column; */
+    /* margin-top: 20vh; */
+/*     justify-content: center;
+    align-items: flex-start; */
+/*     gap: 5vh; */
+    min-height: 100vh;
+    width: 5000px;
+    /* overflow: hidden; */
 }
 
 #work .tit{
-    display: flex;
-    justify-content: center;
-    margin-top: 2vh;
+    margin: 0 0 4vh 2%;
     color: var(--white);
     font-family: var(--zen-dots);
     text-shadow: 0px 7px 0px var(--point-color);
@@ -515,14 +517,20 @@ section {
 
 #work .horizontal-wrapper{
     display: flex;
-    width: calc(100vw * number_of_items);
+    width: max-content; 
+    padding: 0 2vw;
+    /* width: calc(39.6vw * 4); */
     gap: 2vw;
-    margin-left: 2vw;
+  /*   margin-left: 2vw; */
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 
 #work .horizontal-wrapper .workli {
     min-height: 50vh;
     flex: 0 0 auto;
+    width: 39.6vw;
+    min-height: 60vh;
   }
 
 #work .horizontal-wrapper .workli a{
