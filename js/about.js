@@ -58,17 +58,6 @@ $(function () {
 
 
 
-  gsap.utils.toArray("section").forEach((panel, i) => {
-    ScrollTrigger.create({
-      trigger: panel,
-      start: "top top",
-      end: "bottom top",
-      snap: 1,
-    });
-  });
-
-
-
   // ⭐ 가로 스크롤 설정
   const hor = document.querySelector("#work");
   const workWrapper = document.querySelector("#work .horizontal-wrapper");
@@ -208,15 +197,21 @@ $(function () {
   let animation = bodymovin.loadAnimation({
     container: document.getElementById('lottie'),
     renderer: 'svg',
-    loop: true, //반복재생
-    autoplay: true, //자동재생
+    loop: true,
+    autoplay: true,
     path: './img/about/main_character.json',
 
   });
 
 
-  //ufo 애니메이션
+  // UFO 애니메이션 로딩 완료 시 실행
   animation.addEventListener('DOMLoaded', () => {
+    const ufo = document.getElementById('lottie');
+    const beam = document.querySelector('.beam');
+    const text = document.querySelector('#main .txt');
+    const hoverZone = document.querySelector('.lottie-hover-zone');
+
+    // UFO 등장 애니메이션
     gsap.from('#lottie', {
       scrollTrigger: {
         trigger: '#main',
@@ -228,7 +223,7 @@ $(function () {
       ease: "back.out(1.7)",
     });
 
-    //ufo 둥둥
+    // UFO 둥둥 움직임
     gsap.to('#lottie', {
       y: 15,
       duration: 2,
@@ -236,58 +231,73 @@ $(function () {
       yoyo: true,
       ease: 'sine.inOut'
     });
-  });
-  //ufo 호버
-  const hoverZone = document.querySelector('.lottie-hover-zone');
 
-  hoverZone.addEventListener('mouseenter', () => {
-    gsap.to('#lottie', {
-      keyframes: [
-        { y: 30, rotation: 5, x: -10, duration: 0.3 },
-        { y: 32, rotation: -5, x: 10, duration: 0.3 },
-        { y: 30, rotation: 3, x: -5, duration: 0.3 },
-        { y: 15, rotation: 0, x: 0, duration: 0.4 },
-        { y: 0, rotation: 0, x: 0, duration: 0.4 },
-      ],
-      ease: 'sine.inOut'
+    // UFO 클릭 애니메이션
+    ufo.addEventListener('click', () => {
+      gsap.to('#lottie', {
+        keyframes: [
+          { y: 30, rotation: 5, x: -10, duration: 0.3 },
+          { y: 32, rotation: -5, x: 10, duration: 0.3 },
+          { y: 30, rotation: 3, x: -5, duration: 0.3 },
+          { y: 15, rotation: 0, x: 0, duration: 0.4 },
+          { y: 0, rotation: 0, x: 0, duration: 0.4 },
+        ],
+        ease: 'sine.inOut'
+      });
     });
-  });
 
-  const ufo = document.getElementById('lottie');
-  const beam = document.querySelector('.beam');
-  const text = document.querySelector('#main .txt');
+    // UFO 빔 타임라인 정의 (paused 상태)
+    const tl = gsap.timeline({ paused: true, repeat: -1, repeatDelay: 1.5 });
 
-  ufo.addEventListener('click', () => {
-    // GSAP 타임라인 사용해서 동시에 실행
-    const tl = gsap.timeline();
-
-    // 빔 켜짐 + 텍스트 위로 동시에 시작
     tl.to(beam, {
       opacity: 1,
       duration: 0.8,
       ease: "power1.out"
-    }, 0); // ← 0초부터 시작
+    }, 0);
 
     tl.to(text, {
       y: -80,
-      duration: 1.2,
+      duration: 3,
       ease: "power2.out"
-    }, 0); // ← 동시에 시작
+    }, 0);
 
-    // 텍스트 다시 제자리로
     tl.to(text, {
       y: 0,
       duration: 1.2,
       ease: "power2.inOut"
-    }, ">"); // 이전 애니메이션 끝난 직후 시작
+    }, ">");
 
-    // 빔 꺼짐
     tl.to(beam, {
       opacity: 0,
       duration: 1,
       ease: "power1.in"
-    }, "-=0.5"); // 텍스트 내려가는 중간쯤에 빔 꺼짐
+    }, "-=0.5");
+
+    // 스크롤 진입 시, 1.8초 후 타임라인 재생
+    ScrollTrigger.create({
+      trigger: "#main",
+      start: "top center",
+      onEnter: () => {
+        if (!tl.isActive() && tl.progress() === 0) {
+          gsap.delayedCall(1.8, () => {
+            if (!tl.isActive() && tl.progress() === 0) {
+              tl.play();
+            }
+          });
+        }
+      }
+    });
+
   });
+
+
+
+
+
+
+
+
+
 
   //페이퍼 회전
   gsap.to("#resume .paper", {
@@ -371,7 +381,7 @@ $(function () {
 
   document.querySelector('.goback a').addEventListener('click', function (e) {
     e.preventDefault(); // 기본 이동 막기
-  
+
     if (typeof scroll !== 'undefined' && typeof scroll.scrollTo === 'function') {
       // 🚀 Locomotive Scroll이 있는 경우
       scroll.scrollTo(0, {
@@ -386,5 +396,5 @@ $(function () {
       });
     }
   });
- 
+
 });
