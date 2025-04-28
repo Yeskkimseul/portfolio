@@ -14,7 +14,8 @@
     --red: #6F3E37;
     --white: #fff;
     --paper-color: #F3F3F3;
-    --gray-666 : #666;
+    --gray-eee: #eee;
+    --gray-666: #666;
     --gray-ccc: #ccc;
     --night-sky: linear-gradient(180deg, #111436 60%, #313A9C 100%);
     --pretendard: "Pretendard Variable", sans-serif;
@@ -38,7 +39,8 @@ body {
     font-family: var(--pretendard);
     cursor: none;
 }
-a{
+
+a {
     cursor: none;
 }
 
@@ -71,15 +73,15 @@ a{
     background: url(../img/main/star_cursor_hover.svg) no-repeat center/contain;
 }
 
-.star-trail-svg{
+.star-trail-svg {
     background: url(../img/main/star_cursor.svg) no-repeat center/contain;
     position: fixed;
     width: 10px;
     height: 10px;
     pointer-events: none;
     z-index: 9998;
-    opacity: 0.6; 
-    border-radius: 50%; 
+    opacity: 0.6;
+    border-radius: 50%;
     filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 6px #fff) saturate(0);
 }
 
@@ -89,23 +91,104 @@ section {
     overflow: hidden;
 }
 
-.goback {
+.menu {
     width: clamp(60px, 5vw, 80px);
     aspect-ratio: 1 / 1;
     position: fixed;
     right: 2%;
     top: 6%;
-    z-index: 100;
+    z-index: 999;
     cursor: pointer;
 }
 
-.goback img {
+.menu img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
 }
 
+.menu_ul {
+    display: none;
+}
+
+.menu_ul.on {
+    display: block;
+}
+
+.gnb {
+    position: absolute;
+    top: 10vh; right: -2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 1.5vh;
+}
+
+.gnb li {
+    background: var(--gray-eee);
+    border: var(--border3);
+    border-right: none;
+    box-shadow: 9px 8px 0px 0px #000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.gnb li.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+.gnb li:nth-child(odd){
+    background: var(--gray-eee);
+    color: var(--point-color);
+}
+.gnb li:nth-child(even){
+    color: var(--gray-eee);
+    background: var(--point-color);
+}
+
+.gnb li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gnb li:nth-child(1) a{
+    padding: 2vh 3vw;
+}
+.gnb li:nth-child(2) a{
+    padding: 2vh 2.5vw;
+}
+.gnb li:nth-child(3) a{
+    padding: 2vh 2vw;
+}
+.gnb li:nth-child(4) a{
+    padding: 2vh 1.5vw;
+}
+.gnb li:nth-child(5) a{
+    padding: 2vh 1vw;
+}
+
+
+.gnb li a span {
+    font-size: clamp(24px, 4vw, 40px);
+    width: clamp(180px, 25vw, 260px);
+    font-family: var(--zen-dots);
+    text-align: center;
+}
+
+.menu_bg{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.50);
+    position: fixed;
+    z-index: 998;
+    display: none;
+}
+.menu_bg.on{
+    display: block;
+}
 #main {
     background: var(--night-sky);
     overflow: hidden;
@@ -252,8 +335,8 @@ section {
     width: clamp(400px, 45vw, 638px);
     height: auto;
     z-index: 9;
-  }
-  
+}
+
 #lottie {
     pointer-events: auto;
     position: absolute;
@@ -264,6 +347,7 @@ section {
     height: auto;
     z-index: 9;
 }
+
 .lottie-hover-zone {
     position: absolute;
     top: 0;
@@ -271,7 +355,7 @@ section {
     width: 100%;
     height: 100%;
     z-index: 10;
-  }
+}
 
 #main .chara .beam {
     width: clamp(500px, 76vw, 1600px);
@@ -309,7 +393,8 @@ section {
 #resume {
     position: relative;
     overflow: visible;
-    padding-bottom: 0 !important; /* ✅ 공백 유발할 수 있는 요소 제거 */
+    padding-bottom: 0 !important;
+    /* ✅ 공백 유발할 수 있는 요소 제거 */
     margin-bottom: 0 !important;
 }
 
@@ -325,7 +410,7 @@ section {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    border: var(--border);
+    border: var(--border3);
     background: white;
 }
 
@@ -493,20 +578,20 @@ section {
     width: 30%;
 }
 
-#work{
+#work {
     position: relative;
-/*     display: flex;
+    /*     display: flex;
     flex-direction: column; */
     /* margin-top: 20vh; */
-/*     justify-content: center;
+    /*     justify-content: center;
     align-items: flex-start; */
-/*     gap: 5vh; */
+    /*     gap: 5vh; */
     min-height: 100vh;
     width: 5000px;
     /* overflow: hidden; */
 }
 
-#work .tit{
+#work .tit {
     margin: 2% 0 4vh 2%;
     color: var(--white);
     font-family: var(--zen-dots);
@@ -516,13 +601,13 @@ section {
     font-size: clamp(80px, 6vw, 120px);
 }
 
-#work .horizontal-wrapper{
+#work .horizontal-wrapper {
     display: flex;
-    width: max-content; 
-    padding: 0 2vw;
+    width: max-content;
+    padding: 0 15vw;
     /* width: calc(39.6vw * 4); */
     gap: 2vw;
-  /*   margin-left: 2vw; */
+    /*   margin-left: 2vw; */
     will-change: transform;
     transform-style: preserve-3d;
 }
@@ -531,49 +616,79 @@ section {
     min-height: 50vh;
     flex: 0 0 auto;
     width: 39.6vw;
-    min-height: 60vh;
-  }
-
-#work .horizontal-wrapper .workli a{
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
-    border: 5px solid #000;
-}
-#work .horizontal-wrapper .workli .top{
-    display: flex;
-    padding: 2vh 1vw;
-    background: var(--white);
-    align-items: center;
-    gap: 22px;
-    border-bottom: 5px solid #000;
+    border: 3px solid #000;
 }
 
-#work .horizontal-wrapper .workli .top h4{
+#work .horizontal-wrapper .workli .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh 1vw;
+    background: var(--white);
+    border-bottom: 3px solid #000;
+}
+
+#work .horizontal-wrapper .workli .top .txt{
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+#work .horizontal-wrapper .workli .top h4 {
     font-size: clamp(40px, 6vw, 60px);
     font-weight: 600;
 }
-#work .horizontal-wrapper .workli .top .sub{
+
+#work .horizontal-wrapper .workli .top .sub {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
-#work .horizontal-wrapper .workli .top .sub p{
+
+#work .horizontal-wrapper .workli .top .sub p {
     font-size: clamp(16px, 2vw, 20px);
     font-weight: 500;
     color: var(--gray-666);
 }
-#work .horizontal-wrapper .workli .top .sub span{
+
+#work .horizontal-wrapper .workli .top .sub span {
     font-size: clamp(16px, 2vw, 18px);
     font-weight: 400;
     color: var(--gray-666);
 }
 
-#work .horizontal-wrapper .workli .bottom_img{
-    width: clamp(400px,40vw,750px);
+#work .horizontal-wrapper .workli .top .button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
+#work .horizontal-wrapper .workli .top .button a{
+    border: 2px solid #555;
+    width: 7vw;
+    padding: 1vh 1vw;
+    border-radius: 50px;
+    font-size: 16px;
+    color: #555;
+    font-weight: 600;
+    transition: .5s;
+}
+
+#work .horizontal-wrapper .workli .top .button a:hover{
+    background: var(--gray-666);
+    color: var(--white);
+}
+#work .horizontal-wrapper .workli .bottom_img {
+    width: clamp(500px, 50vw, 760px);
     height: auto;
 }
 
-#work .horizontal-wrapper .workli .bottom_img img{
+#work .horizontal-wrapper .workli .bottom_img img {
     width: 100%;
     aspect-ratio: 748.77 / 421;
     height: auto;
@@ -582,9 +697,10 @@ section {
 }
 
 .responsive-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 필요 시 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 필요 시 */
 }
 
 #about {
@@ -773,7 +889,7 @@ section {
 
 #contact .cont_txt {
     width: 80%;
-    height: 80%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -787,7 +903,7 @@ section {
     line-height: 1.2;
 }
 
-#contact .cont_txt .top{
+#contact .cont_txt .top {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -803,27 +919,27 @@ section {
     -webkit-text-stroke-color: var(--dark-word);
 }
 
-#contact .cont_txt .top .cont{
+#contact .cont_txt .top .cont {
     display: flex;
     text-align: left;
     gap: 5%;
     justify-content: center;
 }
 
-#contact .cont_txt .top .cont h5{
-    font-size: clamp(30px,4vw,60px);
+#contact .cont_txt .top .cont h5 {
+    font-size: clamp(30px, 4vw, 60px);
     font-weight: 600;
     letter-spacing: -2px;
 }
 
-#contact .cont_txt .top .cont h6{
+#contact .cont_txt .top .cont h6 {
     color: var(--light-blue);
-    font-size: clamp(18px,2vw,28px);
+    font-size: clamp(18px, 2vw, 28px);
     font-weight: 600;
     letter-spacing: -1.5px;
 }
 
-#contact .cont_txt .bottom p{
+#contact .cont_txt .bottom p {
     padding-bottom: 60px;
     width: 50%;
     opacity: 80%;

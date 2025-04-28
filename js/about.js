@@ -45,6 +45,8 @@ $(function () {
       horizontalTrigger.pin === workWrapper &&
       horizontalTrigger.isActive;
 
+      const isHorizontalComplete = horizontalTrigger && horizontalTrigger.progress === 1;
+
     if (isScrolling || scrollCooldown || isPinned) return;
 
     if (e.deltaY > 50) {
@@ -61,7 +63,6 @@ $(function () {
   // ⭐ 가로 스크롤 설정
   const hor = document.querySelector("#work");
   const workWrapper = document.querySelector("#work .horizontal-wrapper");
-  const workli = gsap.utils.toArray("#work .horizontal-wrapper .workli");
 
   const scrollLength = workWrapper.scrollWidth - window.innerWidth;
 
@@ -122,7 +123,7 @@ $(function () {
   });
 
   // 🔝 scroll to top
-  document.querySelector(".goback a").addEventListener("click", function (e) {
+  document.querySelector(".menu a").addEventListener("click", function (e) {
     e.preventDefault();
     scroll.scrollTo(0, {
       duration: 1000,
@@ -379,22 +380,57 @@ $(function () {
     ease: "power2.out",
   });
 
-  document.querySelector('.goback a').addEventListener('click', function (e) {
-    e.preventDefault(); // 기본 이동 막기
 
-    if (typeof scroll !== 'undefined' && typeof scroll.scrollTo === 'function') {
-      // 🚀 Locomotive Scroll이 있는 경우
-      scroll.scrollTo(0, {
-        duration: 1000,
-        easing: [0.25, 0.0, 0.35, 1.0],
+  const menu = document.querySelector('.menu');
+  const menubg = document.querySelector('.menu_bg');
+  const menuul = document.querySelector('.menu_ul');
+  const menuItems = document.querySelectorAll('.gnb li');
+  
+  function closeMenu() {
+    menubg.classList.remove('on');
+    menuul.classList.remove('on');
+    menuItems.forEach((li) => {
+      li.classList.remove('show');
+    });
+  }
+  
+  // 메뉴 버튼 클릭 시 toggle
+  menu.addEventListener('click', function (e) {
+    if (menuul.contains(e.target)) return;
+    const isOpen = menuul.classList.contains('on');
+  
+    if (!isOpen) {
+      menubg.classList.add('on');
+      menuul.classList.add('on');
+  
+      menuItems.forEach((li, i) => {
+        setTimeout(() => {
+          li.classList.add('show');
+        }, i * 100); 
       });
+  
     } else {
-      // ✨ 일반 브라우저 스크롤
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+      closeMenu();
     }
   });
+  
+  
+  // 메뉴 항목 클릭 시 메뉴 닫기
+  menuul.addEventListener('click', function (e) {
+    const target = e.target.closest('a');
+    if (target) {
+      closeMenu();
+    }
+  });
+  
+  // 배경 클릭 시 메뉴 닫기
+  menubg.addEventListener('click', function (e) {
+    // menuul 내부 클릭 시는 무시
+    if (!menuul.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+
 
 });
