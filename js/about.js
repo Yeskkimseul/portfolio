@@ -11,28 +11,29 @@ $(function () {
 
   function scrollToSection(index) {
     if (scrollCooldown) return;
-
+  
     const horizontalTrigger = ScrollTrigger.getById("work-horizontal");
     const isInHorizontal = horizontalTrigger && horizontalTrigger.isActive;
-
+  
     if (isInHorizontal) return;
-
+  
     if (index >= 0 && index < sections.length) {
       isScrolling = true;
       scrollCooldown = true;
-
-      scroll.scrollTo(sections[index], {
-        offset: 0,
-        duration: 1000,
-        easing: [0.25, 0.0, 0.35, 1.0],
-        callback: () => {
-          isScrolling = false;
-          currentIndex = index;
-          setTimeout(() => {
-            scrollCooldown = false;
-          }, 1200);
-        },
+  
+      const targetSection = sections[index];
+      const top = targetSection.getBoundingClientRect().top + window.pageYOffset;
+  
+      window.scrollTo({
+        top: top,
+        behavior: 'smooth'
       });
+  
+      setTimeout(() => {
+        isScrolling = false;
+        currentIndex = index;
+        scrollCooldown = false;
+      }, 5000); // 스크롤 애니메이션 시간과 일치시켜야 함
     }
   }
 
@@ -122,14 +123,7 @@ $(function () {
     el.addEventListener("mouseleave", () => cursor2.classList.remove("hover"));
   });
 
-  // 🔝 scroll to top
-  document.querySelector(".menu a").addEventListener("click", function (e) {
-    e.preventDefault();
-    scroll.scrollTo(0, {
-      duration: 1000,
-      easing: [0.25, 0.0, 0.35, 1.0],
-    });
-  });
+
 
   gsap.from("#main .top, #main .top img", {
     scrollTrigger: {
@@ -412,8 +406,8 @@ $(function () {
     } else {
       closeMenu();
     }
+    
   });
-  
   
   // 메뉴 항목 클릭 시 메뉴 닫기
   menuul.addEventListener('click', function (e) {

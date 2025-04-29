@@ -625,6 +625,7 @@ section {
 #work .horizontal-wrapper .workli .top {
     display: flex;
     justify-content: space-between;
+    gap: 1vw;
     padding: 2vh 1vw;
     background: var(--white);
     border-bottom: 3px solid #000;
@@ -632,18 +633,20 @@ section {
 
 #work .horizontal-wrapper .workli .top .txt{
     display: flex;
-    align-items: center;
     gap: 22px;
+    justify-content: center;
 }
 
 #work .horizontal-wrapper .workli .top h4 {
     font-size: clamp(40px, 6vw, 60px);
     font-weight: 600;
+    line-height: 150%;
 }
 
 #work .horizontal-wrapper .workli .top .sub {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 6px;
 }
 
@@ -670,7 +673,7 @@ section {
 
 #work .horizontal-wrapper .workli .top .button a{
     border: 2px solid #555;
-    width: 7vw;
+    width: 5vw;
     padding: 1vh 1vw;
     border-radius: 50px;
     font-size: 16px;
