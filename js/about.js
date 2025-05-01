@@ -2,40 +2,10 @@ $(function () {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 
-
   let isScrolling = false;
   let scrollCooldown = false;
   let isHorizontalScrolling = false;
-  const sections = document.querySelectorAll("section");
   let currentIndex = 0;
-
-  function scrollToSection(index) {
-    if (scrollCooldown) return;
-  
-    const horizontalTrigger = ScrollTrigger.getById("work-horizontal");
-    const isInHorizontal = horizontalTrigger && horizontalTrigger.isActive;
-  
-    if (isInHorizontal) return;
-  
-    if (index >= 0 && index < sections.length) {
-      isScrolling = true;
-      scrollCooldown = true;
-  
-      const targetSection = sections[index];
-      const top = targetSection.getBoundingClientRect().top + window.pageYOffset;
-  
-      window.scrollTo({
-        top: top,
-        behavior: 'smooth'
-      });
-  
-      setTimeout(() => {
-        isScrolling = false;
-        currentIndex = index;
-        scrollCooldown = false;
-      }, 5000); // 스크롤 애니메이션 시간과 일치시켜야 함
-    }
-  }
 
   window.addEventListener("wheel", (e) => {
     const horizontalTrigger = ScrollTrigger.getById("work-horizontal");
@@ -376,6 +346,8 @@ $(function () {
 
 
   const menu = document.querySelector('.menu');
+  const menuop = document.querySelector('.menu .menuop')
+  const menucl = document.querySelector('.menu .menucl')
   const menubg = document.querySelector('.menu_bg');
   const menuul = document.querySelector('.menu_ul');
   const menuItems = document.querySelectorAll('.gnb li');
@@ -383,6 +355,7 @@ $(function () {
   function closeMenu() {
     menubg.classList.remove('on');
     menuul.classList.remove('on');
+    menucl.classList.remove('on');
     menuItems.forEach((li) => {
       li.classList.remove('show');
     });
@@ -392,11 +365,14 @@ $(function () {
   menu.addEventListener('click', function (e) {
     if (menuul.contains(e.target)) return;
     const isOpen = menuul.classList.contains('on');
+
   
     if (!isOpen) {
       menubg.classList.add('on');
       menuul.classList.add('on');
-  
+      menuop.classList.remove('on');
+      menucl.classList.add('on');
+
       menuItems.forEach((li, i) => {
         setTimeout(() => {
           li.classList.add('show');
@@ -405,6 +381,7 @@ $(function () {
   
     } else {
       closeMenu();
+      menuop.classList.add('on');
     }
     
   });
@@ -414,6 +391,7 @@ $(function () {
     const target = e.target.closest('a');
     if (target) {
       closeMenu();
+      menuop.classList.add('on');
     }
   });
   
@@ -422,6 +400,7 @@ $(function () {
     // menuul 내부 클릭 시는 무시
     if (!menuul.contains(e.target)) {
       closeMenu();
+      menuop.classList.add('on');
     }
   });
 
