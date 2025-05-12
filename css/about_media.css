@@ -1,3 +1,9 @@
+@media screen and (max-width: 1300px) {
+    #work .horizontal-wrapper .workli .top .sub {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     #main .top img {
         display: none;
@@ -6,14 +12,18 @@
     #main .chara .beam {
         display: none;
     }
- 
+
     #main .txt {
-        height: 100vh;
+        height: 30vh;
         align-items: center;
     }
 
     #main img.bottom {
         display: none;
+    }
+
+    #resume {
+        height: 120vh;
     }
 
     #resume .paper .deco {
@@ -49,7 +59,8 @@
     }
 
     #about .cartoon .cut1 .C11 {
-        left: 2%; top: 12%;
+        left: 2%;
+        top: 12%;
     }
 
     #about .cartoon .cut1 .cut1A {
@@ -58,11 +69,13 @@
         position: unset;
         background: url(../img/about/cut1A.svg) no-repeat center;
     }
-    #about .cartoon .cut1 .C12{
-        bottom: 12%; right: 2%;
+
+    #about .cartoon .cut1 .C12 {
+        bottom: 12%;
+        right: 2%;
     }
 
-    #about .cartoon .cut_right{
+    #about .cartoon .cut_right {
         width: 100%;
         height: 50%;
         display: flex;
@@ -72,12 +85,12 @@
         gap: 6%;
     }
 
-    #about .cartoon .cut_right .cut2{
+    #about .cartoon .cut_right .cut2 {
         width: 100%;
         height: inherit;
     }
 
-    #about .cartoon .cut2 .C21{
+    #about .cartoon .cut2 .C21 {
         left: 2%;
     }
 
@@ -86,28 +99,75 @@
         background: url(../img/about/cut2A.svg) no-repeat center;
     }
 
-    #about .cartoon .cut2 .C22{
+    #about .cartoon .cut2 .C22 {
         bottom: -4%;
     }
-    #about .cartoon .cut3 .C31{
+
+    #about .cartoon .cut3 .C31 {
         bottom: -10%;
         right: 2%;
     }
+
     #about .cartoon .cut_right .cut3A {
         position: unset;
         background: url(../img/about/cut3A.svg) no-repeat center;
     }
-    #contact .img .bottom_frame{
+
+    #contact .img .bottom_frame {
         display: none;
     }
-    #contact{
-        height: 60vh;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+    #contact {
+        height: 80vh;
     }
 
+    #contact .cont_txt {
+        width: 100%;
+        height: fit-content;
+    }
+
+    #contact .cont_txt .bottom {
+        display: none;
+    }
+
+    #work {
+        width: 100vw;
+        min-height: fit-content;
+        margin-top: 10vh;
+    }
+
+    #work .tit {
+        margin: 4vh 0;
+        text-align: center;
+    }
+
+    #work .horizontal-wrapper {
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 2vw;
+    }
+
+    #work .horizontal-wrapper .workli .top {
+        flex-direction: column-reverse;
+    }
+
+
+    #work .horizontal-wrapper .workli .top .button a {
+        width: clamp(100px, 5vw, 150px);
+        height: 26px;
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 768px) {
-  
+
     #resume {
         height: 150vh;
         display: flex;
@@ -142,8 +202,56 @@
         position: unset;
     }
 
-    #contact .cont_txt .bottom{
+    #contact .cont_txt .bottom {
         display: none;
     }
 
+}
+
+@media screen and (max-width: 600px) {
+    #main .txt {
+        font-size: clamp(2.4rem, 7vw, 10rem);
+    }
+
+    #resume .skill {}
+
+}
+
+@media screen and (max-width: 500px) {
+    #work .horizontal-wrapper {
+        gap: 4vw;
+    }
+
+    #work .horizontal-wrapper .workli {
+        width: 80vw;
+    }
+
+    #work .horizontal-wrapper .workli .bottom_img {
+        width: 80vw;
+    }
+
+    #work .horizontal-wrapper .workli .top .button {
+        flex-direction: row;
+    }
+
+    #contact .cont_txt p {
+        display: none;
+    }
+
+    #contact .cont_txt .top {
+        margin-bottom: clamp(20px,2vh,50px);
+    }
+
+    #contact .cont_txt .top .cont {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 1vh;
+    }
+
+    #contact .cont_txt .top .cont>div {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }

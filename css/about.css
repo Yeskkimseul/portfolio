@@ -108,9 +108,11 @@ section {
     display: none;
     transition: .3s;
 }
-.menu img.on{
+
+.menu img.on {
     display: flex;
 }
+
 .menu_ul {
     display: none;
 }
@@ -121,7 +123,8 @@ section {
 
 .gnb {
     position: absolute;
-    top: 10vh; right: -2vw;
+    top: 10vh;
+    right: -2vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -139,29 +142,35 @@ section {
     transform: translateY(-20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 .gnb li.show {
     opacity: 1;
     transform: translateY(0);
-  }
-  
+}
+
 .gnb li a {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.gnb li:nth-child(1) a{
+
+.gnb li:nth-child(1) a {
     padding: 2vh 3vw;
 }
-.gnb li:nth-child(2) a{
+
+.gnb li:nth-child(2) a {
     padding: 2vh 2.5vw;
 }
-.gnb li:nth-child(3) a{
+
+.gnb li:nth-child(3) a {
     padding: 2vh 2vw;
 }
-.gnb li:nth-child(4) a{
+
+.gnb li:nth-child(4) a {
     padding: 2vh 1.5vw;
 }
-.gnb li:nth-child(5) a{
+
+.gnb li:nth-child(5) a {
     padding: 2vh 1vw;
 }
 
@@ -173,7 +182,7 @@ section {
     text-align: center;
 }
 
-.menu_bg{
+.menu_bg {
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.50);
@@ -181,9 +190,11 @@ section {
     z-index: 998;
     display: none;
 }
-.menu_bg.on{
+
+.menu_bg.on {
     display: block;
 }
+
 #main {
     background: var(--night-sky);
     overflow: hidden;
@@ -374,7 +385,7 @@ section {
 #main .txt {
     width: 100%;
     color: var(--white);
-    font-size: clamp(4rem, 7vw, 10rem);
+    font-size: clamp(3.2rem, 7vw, 10rem);
     font-family: var(--hyper-type);
     text-align: center;
     text-shadow: 0px 7px 0px var(--point-color);
@@ -422,7 +433,10 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: clamp(10px,2vw,20px);
+}
+#resume .skill ul li img{
+    width: clamp(40px,3vw,60px);
 }
 
 #resume .paper {
@@ -593,7 +607,7 @@ section {
     text-shadow: 0px 7px 0px var(--point-color);
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #000;
-    font-size: clamp(80px, 6vw, 120px);
+    font-size: clamp(60px, 6vw, 120px);
 }
 
 #work .horizontal-wrapper {
@@ -608,10 +622,9 @@ section {
 }
 
 #work .horizontal-wrapper .workli {
-    min-height: 50vh;
     flex: 0 0 auto;
     width: 39.6vw;
-    min-height: 50vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     border: 3px solid #000;
@@ -626,7 +639,7 @@ section {
     border-bottom: 3px solid #000;
 }
 
-#work .horizontal-wrapper .workli .top .txt{
+#work .horizontal-wrapper .workli .top .txt {
     display: flex;
     gap: 22px;
     justify-content: center;
@@ -657,7 +670,7 @@ section {
     color: var(--gray-666);
 }
 
-#work .horizontal-wrapper .workli .top .button{
+#work .horizontal-wrapper .workli .top .button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -666,23 +679,27 @@ section {
     text-align: center;
 }
 
-#work .horizontal-wrapper .workli .top .button a{
+#work .horizontal-wrapper .workli .top .button a {
     border: 2px solid #555;
-    width: 5vw;
+    width: clamp(50px, 5vw, 150px);
     padding: 1vh 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: clamp(10px, 1vw, 16px);
     color: #555;
     font-weight: 600;
     transition: .5s;
 }
 
-#work .horizontal-wrapper .workli .top .button a:hover{
+#work .horizontal-wrapper .workli .top .button a:hover {
     background: var(--gray-666);
     color: var(--white);
 }
+
 #work .horizontal-wrapper .workli .bottom_img {
-    width: clamp(500px, 50vw, 760px);
+    width: 39.6vw;
     height: auto;
 }
 
@@ -719,7 +736,7 @@ section {
     text-shadow: 0px 7px 0px var(--point-color);
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #000;
-    font-size: clamp(80px, 6vw, 120px);
+    font-size: clamp(60px, 6vw, 120px);
 }
 
 #about .cartoon {
@@ -740,7 +757,7 @@ section {
     word-break: keep-all;
     line-height: 1.4;
     text-align: center;
-    font-size: 20px;
+    font-size: clamp(16px,2vw,20px);
 }
 
 #about .cartoon .cut1 {
@@ -755,7 +772,7 @@ section {
     left: -10%;
     z-index: 2;
     box-shadow: 9px 8px 0px 0px #000;
-    font-size: 24px;
+    font-size: clamp(18px,2vw,24px);
     font-weight: 500;
 }
 
@@ -911,7 +928,7 @@ section {
 
 #contact .cont_txt .top h3 {
     font-family: var(--hyper-type);
-    font-size: clamp(50px, 5vw, 100px);
+    font-size: clamp(30px, 5vw, 100px);
     color: var(--point-color);
     text-shadow: 0px 7px 0px var(--white);
     -webkit-text-stroke-width: 2px;

@@ -20,11 +20,11 @@ $(function () {
 
     if (isScrolling || scrollCooldown || isPinned) return;
 
-    if (e.deltaY > 50) {
-      scrollToSection(currentIndex + 1);
-    } else if (e.deltaY < -50) {
-      scrollToSection(currentIndex - 1);
-    }
+    // if (e.deltaY > 50) {
+    //   scrollToSection(currentIndex + 1);
+    // } else if (e.deltaY < -50) {
+    //   scrollToSection(currentIndex - 1);
+    // }
   });
 
 
@@ -32,28 +32,43 @@ $(function () {
 
 
   // ⭐ 가로 스크롤 설정
-  const hor = document.querySelector("#work");
-  const workWrapper = document.querySelector("#work .horizontal-wrapper");
+ScrollTrigger.matchMedia({
+  // 데스크탑 (1001px 이상)
+  "(min-width: 1001px)": function() {
+    const hor = document.querySelector("#work");
+    const workWrapper = document.querySelector("#work .horizontal-wrapper");
 
-  const scrollLength = workWrapper.scrollWidth - window.innerWidth;
+    const scrollLength = workWrapper.scrollWidth - window.innerWidth;
 
-  gsap.to(workWrapper, {
-    x: () => -scrollLength,
-    ease: "none",
-    scrollTrigger: {
-      id: "work-horizontal",
-      trigger: hor,
-      start: "top top",
-      end: () => "+=" + scrollLength,
-      pin: true,
-      scrub: 2.5,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onEnter: () => isHorizontalScrolling = true,
-      onLeave: () => isHorizontalScrolling = false,
-      onLeaveBack: () => isHorizontalScrolling = false,
-    },
-  });
+    gsap.to(workWrapper, {
+      x: () => -scrollLength,
+      ease: "none",
+      scrollTrigger: {
+        id: "work-horizontal",
+        trigger: hor,
+        start: "top top",
+        end: () => "+=" + scrollLength,
+        pin: true,
+        scrub: 2.5,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onEnter: () => isHorizontalScrolling = true,
+        onLeave: () => isHorizontalScrolling = false,
+        onLeaveBack: () => isHorizontalScrolling = false,
+      },
+    });
+  },
+
+  // 모바일 또는 태블릿 (1000px 이하)
+  "(max-width: 1000px)": function() {
+    // 필요하다면 cleanup 처리나 클래스 제거 등을 여기에 작성
+    ScrollTrigger.getById("work-horizontal")?.kill(); // 기존 horizontal scroll 제거
+
+    // 선택적으로 스타일 리셋
+    const workWrapper = document.querySelector("#work .horizontal-wrapper");
+    if (workWrapper) workWrapper.style.transform = "none";
+  },
+});
 
   // 🎨 커스텀 커서
   const cursor2 = document.querySelector(".custom_cursor2");
