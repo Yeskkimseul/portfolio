@@ -1,0 +1,117 @@
+    <section class="special_product">
+                <div class="s_tit">
+                    <h2 class="">Photo Gallery</h2>
+                    <p>당신의 시선으로 만나는 살아있는 습지
+                    </p>
+                </div><!-- //.s_tit -->
+                <ul>
+                    <li data-scroll data-scroll-speed="1">
+                        <div class="img_box"><img src="img/p1.png" alt=""></div>
+                        <div class="name">
+                            <strong>우포늪</strong>
+                            <p>생태계가 잘 보존된 내륙 습지</p>
+                        </div>
+                    </li>
+                    <li data-scroll data-scroll-speed="3">
+                        <div class="img_box"><img src="img/p2.png" alt=""></div>
+                        <div class="name">
+                            <strong>순천만 습지</strong>
+                            <p>갈대밭과 철새로 유명한 습지</p>
+                        </div>
+                    </li>
+                    <li data-scroll data-scroll-speed="1">
+                        <div class="img_box"><img src="img/p3.png" alt=""></div>
+                        <div class="name">
+                            <strong>창녕 따오기복원센터</strong>
+                            <p>따오기 복원 중심지</p>
+                        </div>
+                    </li>
+                    <li data-scroll data-scroll-speed="3">
+                        <div class="img_box"><img src="img/p4.png" alt=""></div>
+                        <div class="name">
+                            <strong>대암산 용늪</strong>
+                            <p>국내 최초 람사르 습지</p>
+                        </div>
+                    </li>
+                    <li data-scroll data-scroll-speed="1">
+                        <div class="img_box"><img src="img/p5.png" alt=""></div>
+                        <div class="name">
+                            <strong>철원 평야 습지</strong>
+                            <p>두루미 서식지로 유명</p>
+                        </div>
+                    </li>
+                    <li data-scroll data-scroll-speed="3">
+                        <div class="img_box"><img src="img/p6.png" alt=""></div>
+                        <div class="name">
+                            <strong>고창 운곡습지</strong>
+                            <p>자연생태 복원 모범 사례</p>
+                        </div>
+                    </li>
+                    <li data-scroll data-scroll-speed="1">
+                        <div class="img_box"><img src="img/p7.png" alt=""></div>
+                        <div class="name">
+                            <strong>제주 물영아리오름</strong>
+                            <p>분화구형 습지의 대표</p>
+                        </div>
+                    </li>
+                    <li data-scroll data-scroll-speed="3">
+                        <div class="img_box"><img src="img/p8.png" alt=""></div>
+                        <div class="name">
+                            <strong>한강 하구 습지</strong>
+                            <p>멸종위기종 서식처</p>
+                        </div>
+                    </li>
+                </ul>
+            </section><!-- special_product -->
+
+
+            
+
+
+            function applySimplyScroll(selector, speed = 4, direction = 'forwards') {
+    $(selector).simplyScroll({
+        speed,
+        direction,
+        pauseOnHover: true,
+        pauseOnTouch: true,
+    })
+}
+
+
+.special_product {
+    height: auto;
+    padding: var(--pd-tb0-lr48);
+}
+
+.special_product ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.special_product ul li {
+    width: 22%;
+    margin-top: 50px;
+}
+
+.special_product ul li:nth-child(odd) {
+    margin-top: 150px;
+}
+
+.special_product ul li .img_box {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+}
+
+.special_product ul li .img_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.special_product ul li .img_box:hover img {
+    transform: scale(1.1);
+}
