@@ -433,10 +433,11 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: clamp(10px,2vw,20px);
+    gap: clamp(10px, 2vw, 20px);
 }
-#resume .skill ul li img{
-    width: clamp(40px,3vw,60px);
+
+#resume .skill ul li img {
+    width: clamp(40px, 3vw, 60px);
 }
 
 #resume .paper {
@@ -757,7 +758,7 @@ section {
     word-break: keep-all;
     line-height: 1.4;
     text-align: center;
-    font-size: clamp(16px,2vw,20px);
+    font-size: clamp(16px, 2vw, 20px);
 }
 
 #about .cartoon .cut1 {
@@ -772,7 +773,7 @@ section {
     left: -10%;
     z-index: 2;
     box-shadow: 9px 8px 0px 0px #000;
-    font-size: clamp(18px,2vw,24px);
+    font-size: clamp(18px, 2vw, 24px);
     font-weight: 500;
 }
 
@@ -924,6 +925,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-bottom: 40px;
 }
 
 #contact .cont_txt .top h3 {
