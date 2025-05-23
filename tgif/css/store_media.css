@@ -1,0 +1,57 @@
+@media screen and (max-width: 1500px) {
+    nav {
+        padding: 0px 100px;
+    }
+
+    .lunch .lunchmenulist .icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1224px) {
+    nav {
+        padding: 0px 50px;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .lunch .lunchmenulist .empty {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    nav {
+        height: 80px;
+        padding: 0px 50px;
+    }
+
+    .gnb {
+        display: none;
+    }
+
+    .ham {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 850px) {
+    .info {
+        width: 100%;
+        top: 45%;
+        left: 0;
+        height: 50vh;
+    }
+
+    .inner .storelist li {
+        padding: 0%;
+        padding-block: 7%;
+    }
+
+}
+@media screen and (max-width: 500px) {
+    nav {
+        padding: 0px 25px;
+    }
+}

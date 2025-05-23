@@ -1,0 +1,78 @@
+@media screen and (max-width: 1500px) {
+    nav {
+        padding: 0px 100px;
+    }
+    .lunch .lunchmenulist .icon{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1224px) {
+    nav {
+        padding: 0px 50px;
+    }
+}
+@media screen and (max-width: 1220px){
+    .lunch .lunchmenulist .empty{
+        display: none;
+    }
+}
+@media screen and (max-width: 1024px) {
+    nav {
+        height: 80px;
+        padding: 0px 50px;
+    }
+
+    .gnb {
+        display: none;
+    }
+
+    .ham {
+        display: block;
+    }
+
+    .bannner .tit {
+        font-size: 60px;
+        line-height: 1em;
+    }
+
+    .bannner .txt>p {
+        font-size: 24px;
+    }
+
+    .eventlist{
+        flex-direction: column;
+    }
+    .eventlist li{
+        width: clamp(200px, 50vw, 400px);
+    }
+    .eventlist .imgbox{
+        width: clamp(200px, 50vw, 400px);
+        aspect-ratio: 400 / 255; 
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    nav {
+        padding: 0px 25px;
+    }
+
+    .bannner {
+        padding: 120px 0;
+    }
+
+    .bannner .tit {
+        font-size: 46px;
+        line-height: 1em;
+    }
+
+    .bannner .txt>p {
+        font-size: 18px;
+    }
+
+    .tabbar div {
+        font-size: 18px;
+        height: 60px;
+    }
+}

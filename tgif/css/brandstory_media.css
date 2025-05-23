@@ -1,0 +1,243 @@
+@media screen and (max-width: 1820px) {
+    .brand_history .left .txt {
+        padding-right: 8%;
+    }
+
+    .brand_history .today .txt {
+        padding-right: 6%;
+    }
+
+}
+
+@media screen and (max-width: 1700px) {
+    #history .his_bg {
+        display: none;
+    }
+    #history .brand_history{
+        gap: 130px;
+    }
+    .brand_history li {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .brand_history .left{
+        flex-direction: column-reverse;
+    }
+    .brand_history .today{
+        flex-direction: column;
+    }
+    .brand_history .right .txt,
+    .brand_history .left .txt,
+    .brand_history .today .txt {
+        text-align: center;
+        padding: 0;
+    }
+    .brand_history .right .txt{
+        width: auto;
+    }
+
+    .brand_history .txt .num {
+        color: var(--w-color-1);
+        line-height: 80px;
+        font-weight: 600;
+        font-size: 100px;
+    }
+    .brand_history .txt .tit {
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .brand_history .today .num{
+        padding: 0;
+        line-height: 80px;
+        font-weight: 600;
+        font-size: 100px;
+    }
+
+    .brand_history .right:nth-child(odd) .txt .num, .brand_history .left .txt .num, .brand_history .today .txt .num {
+        position: static;
+    }
+
+    .brand_history .left .img_l, .brand_history .right .img_r{
+        border-radius: 20px;
+        width: 800px;
+        height: 450px;
+    }
+
+
+
+
+    .hide-on-small {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    nav {
+        padding: 0px 100px;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    #welcome .con .img_box img {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 1224px) {
+    nav {
+        padding: 0px 50px;
+    }
+
+    #welcome .con .img_box img {
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    nav {
+        height: 80px;
+        padding: 0px 50px;
+    }
+
+    .gnb {
+        display: none;
+    }
+
+    .ham {
+        display: block;
+    }
+
+    .bannner .tit {
+        font-size: 60px;
+        line-height: 1em;
+    }
+
+    .bannner .txt>p {
+        font-size: 24px;
+    }
+
+    #welcome {
+        padding: 180px 0;
+    }
+
+    #welcome .con .txt .tit {
+        font-size: 80px;
+    }
+
+    #welcome .con .txt .p {
+        font-size: 20px;
+    }
+
+    #welcome .con .img_box {
+        gap: 50px;
+    }
+
+    #welcome .con .img_box img {
+        width: 400px;
+    }
+
+    #welcome .con .img_box .img1 {
+        margin-bottom: 0px;
+    }
+
+    #welcome .con .img_box .img2 {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #welcome .con .img_box img {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    #welcome {
+        padding: 150px 0;
+    }
+
+    #welcome .con .txt {
+        padding: 20px;
+    }
+
+    #welcome .con .txt .tit {
+        font-size: 60px;
+    }
+
+    #welcome .con .txt .p {
+        font-size: 18px;
+    }
+
+    #welcome .con .img_box .img1 {
+        margin-bottom: 0px;
+    }
+
+    #welcome .con .img_box .img2 {
+        margin-top: 0px;
+    }
+
+    #welcome .con .img_box {
+        display: none;
+    }
+    
+    .brand_history .left .img_l, .brand_history .right .img_r{
+        width: 500px;
+        height: 250px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    nav {
+        padding: 0px 25px;
+    }
+
+    .bannner {
+        padding: 120px 0;
+    }
+
+    .bannner .tit {
+        font-size: 46px;
+        line-height: 1em;
+    }
+
+    .bannner .txt>p {
+        font-size: 18px;
+    }
+
+    .tabbar div {
+        font-size: 18px;
+        height: 60px;
+    }
+    #history .brand_history{
+        gap: 60px;
+    }
+    .brand_history li {
+        gap: 40px;
+    }
+
+    .brand_history .txt .num {
+        line-height: 50px;
+        font-weight: 600;
+        font-size: 70px;
+    }
+    .brand_history .today .num {
+        line-height: 50px;
+        font-weight: 600;
+        font-size: 70px;
+    }
+    .brand_history .txt .tit {
+        font-size: 24px;
+    }
+    .brand_history .txt p {
+        font-size: 18px;
+    }
+
+    .brand_history .left .img_l, .brand_history .right .img_r{
+        width: 400px;
+        height: 225px;
+    }
+}

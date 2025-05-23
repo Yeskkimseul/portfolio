@@ -1,0 +1,100 @@
+@media screen and (max-width: 1500px) {
+    nav {
+        padding: 0px 100px;
+    }
+
+    .lunch .lunchmenulist .icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1224px) {
+    nav {
+        padding: 0px 50px;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .lunch .lunchmenulist .empty {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    nav {
+        height: 80px;
+        padding: 0px 50px;
+    }
+
+    .gnb {
+        display: none;
+    }
+
+    .ham {
+        display: block;
+    }
+
+    .bannner .tit {
+        font-size: 60px;
+        line-height: 1em;
+    }
+
+    .bannner .txt>p {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    nav {
+        padding: 0px 25px;
+    }Z
+
+    .bannner {
+        padding: 120px 0;
+    }
+
+    .bannner .tit {
+        font-size: 46px;
+        line-height: 1em;
+    }
+
+    .bannner .txt>p {
+        font-size: 18px;
+    }
+
+    .tabbar {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tabbar ul {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+       
+    }
+    .tabbar li {
+        flex-shrink: 0;
+        width: 50%;       
+        height: clamp(20px, 8vh, 80px);  
+        border-left: 0;
+    }
+    .tabbar li:nth-child(even){
+        border-left:  1px solid var(--w-color-2);
+    }
+    .tabbar li:last-child {
+        border-right: 0;
+    }
+    .tabbar ul.top li{
+        border-bottom:  1px solid var(--w-color-2);
+    }
+    .tabbar ul.top li:nth-child(4), .tabbar ul.top li:nth-child(3){
+        border-bottom:  0;
+    }
+
+    .tabbar ul.bottom li {
+        border-top: 1px solid var(--w-color-2);
+    }
+
+}

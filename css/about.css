@@ -8,6 +8,7 @@
     --bg-color: #D9D9D9;
     --yellow: #FFF87C;
     --point-color: #00AFCE;
+    --point-light: #BFF5FF;
     --dark-word: #000;
     --gray-444: #444;
     --light-blue: #A1B2BD;
@@ -634,6 +635,7 @@ section {
 #work .horizontal-wrapper .workli .top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1vw;
     padding: 2vh 1vw;
     background: var(--white);
@@ -672,30 +674,118 @@ section {
 }
 
 #work .horizontal-wrapper .workli .top .button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     text-align: center;
+    position: relative;
 }
 
-#work .horizontal-wrapper .workli .top .button a {
-    border: 2px solid #555;
-    width: clamp(50px, 5vw, 150px);
-    padding: 1vh 1vw;
+#work .horizontal-wrapper .workli .top .button::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 30px;
+    width: 100%;
+}
+
+/* 메인 버튼 */
+#work .horizontal-wrapper .workli .top .button .view {
+    display: flex;
+    font-size: clamp(16px, 1.5vw, 18px);
+    padding: 0 0 0 clamp(8px, 1.5vw, 10px);
+    height: clamp(40px, 4vh, 48px);
+    width: clamp(98px, 5vw, 112px);
+    justify-content: center;
+    align-items: center;
+    gap: clamp(8px, 1vw, 10px);
+    font-weight: 500;
+    color: var(--gray-666);
+    background: var(--gray-eee);
+    border-radius: 30px;
+    transition: background 0.3s linear, color 0.3s linear;
+    border: 2px solid var(--gray-666);
+}
+
+/* 버튼 hover 효과 */
+#work .horizontal-wrapper .workli .top .button:hover .view {
+    background: var(--point-color);
+    color: var(--white);
+}
+
+/* 아이콘 */
+#work .horizontal-wrapper .workli .top .button .view .img {
+    width: 24px;
+    max-width: 24px;
+    aspect-ratio: 1/1;
+    background: url(../img/about/down.svg) center/cover no-repeat;
+    transition: 0.3s linear;
+}
+
+/* 버튼 hover 시 아이콘 변경 */
+#work .horizontal-wrapper .workli .top .button:hover .view .img {
+    background: url(../img/about/up.svg) center/cover no-repeat;
+}
+
+/* 드롭다운 목록 기본 상태 */
+#work .horizontal-wrapper .workli .top .button .buttons {
+    position: absolute;
+    top: 118%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 500;
+    color: var(--gray-666);
+    background: var(--gray-eee);
+    border-radius: 20px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border: 2px solid var(--gray-666);
+}
+
+/* 전체 button에 hover 시 드롭다운 보이기 */
+#work .horizontal-wrapper .workli .top .button:hover .buttons {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* 드롭다운 항목 */
+#work .horizontal-wrapper .workli .top .button .buttons a {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50px;
-    font-size: clamp(10px, 1vw, 16px);
-    color: #555;
-    font-weight: 600;
-    transition: .5s;
+    padding: clamp(10px, 1.5vw, 16px);
+    transition: background 0.3s linear, color 0.3s linear;
 }
 
-#work .horizontal-wrapper .workli .top .button a:hover {
-    background: var(--gray-666);
+/* 항목 hover 효과 */
+#work .horizontal-wrapper .workli .top .button .buttons a:hover {
+    background: var(--point-color);
+    color: var(--white);
+}
+
+#work .horizontal-wrapper .workli .top .button2 {
+    display: flex;
+    font-size: clamp(16px, 1.5vw, 18px);
+    justify-content: center;
+    align-items: center;
+    width: clamp(98px, 5vw, 112px);
+    height: clamp(40px, 4vh, 48px);
+    gap: clamp(8px, 1vw, 10px);
+    padding: 0 clamp(3px, 1.5vw, 4px) 0 clamp(3px, 1.5vw, 4px);
+    font-weight: 500;
+    color: var(--gray-666);
+    background: var(--gray-eee);
+    border-radius: 30px;
+    transition: background 0.3s linear, color 0.3s linear;
+    border: 2px solid var(--gray-666);
+}
+
+#work .horizontal-wrapper .workli .top .button2:hover {
+    background: var(--point-color);
     color: var(--white);
 }
 
