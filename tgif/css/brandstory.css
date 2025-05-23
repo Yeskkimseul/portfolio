@@ -13,6 +13,7 @@ body.no-scroll {
 .wrap {
 /*     overflow: hidden; */
     position: relative;
+    word-break: keep-all;
 }
 
 

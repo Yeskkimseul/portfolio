@@ -186,7 +186,7 @@ h1 a img{
 }
 
 .main_visual .con .txt strong {
-    line-height: 6rem;
+    line-height: 130%;
     font-size: 80px;
     font-family: var(--Butler);
     font-weight: 200;
@@ -361,11 +361,13 @@ h1 a img{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10%;
+    gap: 5%;
 }
 
 .menu .tit .view span {
-    font-size: clamp(0.8rem,20px,2rem);
+    width: 180px;
+    text-align: center;
+    font-size: clamp(1rem,26px,3rem);
     font-weight: 300;
     color: var(--main-color);
 }
@@ -461,11 +463,19 @@ h1 a img{
     font-family: var(--Butler);
     font-weight: 300;
 }
-
+.brand_story .bg_img_wrapper{
+    width: 100%;
+    height: 478px;
+    overflow: hidden;
+    position: relative;
+}
 .brand_story .bg_img {
     background: center/cover no-repeat fixed url(../asset/main/brandimg2.jpg);
-    height: 478px;
+    height: 150%;
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .brand_story .bottom {
@@ -662,7 +672,7 @@ h1 a img{
 }
 
 .event .con .notice_slide ul .sl3 .img {
-    background-image: url(../asset/main/noticeimg1.png);
+    background-image: url(../asset/main/noticeimg3.png);
     filter: saturate(50%);
 }
 
@@ -677,7 +687,7 @@ h1 a img{
 }
 
 .event .con .notice_slide ul .sl6 .img {
-    background-image: url(../asset/main/noticeimg1.png);
+    background-image: url(../asset/main/noticeimg3.png);
     filter: saturate(50%);
 }
 

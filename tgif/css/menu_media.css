@@ -96,5 +96,13 @@
     .tabbar ul.bottom li {
         border-top: 1px solid var(--w-color-2);
     }
-
+    .lunch .lunchmenulist .menu a{
+        width: 220px;
+    }
+    .lunch .lunchmenulist .menu a:hover > img{
+        transform: none;
+    }
+    .lunch .lunchmenulist .menu a:hover{
+        background: none;
+    }
 }

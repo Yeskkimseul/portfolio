@@ -162,12 +162,12 @@ $(function () {
         "(min-width: 826px)": function () {
             gsap.to(".bg_img", {
                 scrollTrigger: {
-                  trigger: ".bg_img",
+                  trigger: ".brand_story",
                   start: "0% 30%",
                   end:"70% 50%",
                   scrub: 1,
                 },
-                y: -50
+                y: -200
               });
         }
       });

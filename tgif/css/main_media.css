@@ -218,7 +218,7 @@
         font-size: 120px;
     }
 
-    .brand_story .bg_img {
+    .brand_story .bg_img_wrapper {
         height: 308px;
     }
 
@@ -438,11 +438,10 @@
         font-size: 80px;
     }
 
-    .brand_story .bg_img {
+    .brand_story .bg_img_wrapper {
         height: 300px;
         position: absolute;
         left: 0; top: 0;
-        background: center/cover no-repeat url(../asset/main/brandimg3.jpg);
     }
 
     .brand_story .bottom {
@@ -648,5 +647,24 @@
 @media screen and (max-width: 500px) {
     .main_visual nav {
         padding: 0px 25px;
+    }
+    .main_visual .con {
+        margin-top: 40%;
+    }
+    .menu .tit .view span{
+        display: none;
+    }
+    .menu .menuslide .swiper-slide .txt {
+        text-align: center;
+    }
+    .menu .menuslide .swiper-slide a {
+        gap: 10px;
+    }
+    .menu .menuslide .swiper-slide .txt h5 {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .menu .menuslide .swiper-slide .txt span{
+        display: none;
     }
 }
