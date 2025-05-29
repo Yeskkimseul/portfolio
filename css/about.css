@@ -615,7 +615,7 @@ section {
 #work .horizontal-wrapper {
     display: flex;
     width: max-content;
-    padding: 0 15vw;
+    padding: 0 20vw;
     /* width: calc(39.6vw * 4); */
     gap: 2vw;
     /*   margin-left: 2vw; */
@@ -649,7 +649,7 @@ section {
 }
 
 #work .horizontal-wrapper .workli .top h4 {
-    font-size: clamp(40px, 6vw, 60px);
+    font-size: clamp(40px, 4vw, 50px);
     font-weight: 600;
     line-height: 150%;
 }
@@ -727,6 +727,7 @@ section {
 
 /* 드롭다운 목록 기본 상태 */
 #work .horizontal-wrapper .workli .top .button .buttons {
+    display: flex;
     position: absolute;
     top: 118%;
     left: 0;
@@ -741,6 +742,7 @@ section {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    align-items: center;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     border: 2px solid var(--gray-666);
 }
@@ -754,11 +756,13 @@ section {
 
 /* 드롭다운 항목 */
 #work .horizontal-wrapper .workli .top .button .buttons a {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: clamp(10px, 1.5vw, 16px);
     transition: background 0.3s linear, color 0.3s linear;
+    text-align: center;
 }
 
 /* 항목 hover 효과 */

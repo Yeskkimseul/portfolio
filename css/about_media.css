@@ -1,4 +1,4 @@
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1600px) {
     #work .horizontal-wrapper .workli .top .sub {
         display: none;
     }
@@ -116,6 +116,10 @@
     #contact .img .bottom_frame {
         display: none;
     }
+
+    #work .horizontal-wrapper .workli .top h4 {}
+
+    #work .horizontal-wrapper .workli .top .button .view {}
 }
 
 
@@ -151,16 +155,28 @@
         align-items: center;
         flex-wrap: wrap;
         width: 100%;
-        padding: 2vw;
+        padding: 0;
     }
 
     #work .horizontal-wrapper .workli .top h4 {
-        font-size: clamp(20px, 4vw, 40px);
+        font-size: clamp(20px, 2.8vw, 40px);
     }
 
     #work .horizontal-wrapper .workli .top .button .view {
-        font-size: clamp(14px, 1.5vw, 18px);
+        display: none;
     }
+
+    #work .horizontal-wrapper .workli .top .button .buttons {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        width: clamp(98px, 5vw, 112px);
+    }
+
+    #work .horizontal-wrapper .workli .top .button .buttons a {}
+
+    #work .horizontal-wrapper .workli .top .button2 {}
 }
 
 @media screen and (max-width: 768px) {
@@ -212,20 +228,31 @@
     #work .horizontal-wrapper .workli {
         width: 80vw;
     }
-    #work .horizontal-wrapper .workli .top{
+
+    #work .horizontal-wrapper .workli .top {
         padding: 2vh 2vw;
     }
-    #work .horizontal-wrapper .workli .top h4{
-         font-size: clamp(30px, 5vw, 60px);
+
+    #work .horizontal-wrapper .workli .top h4 {
+        font-size: clamp(20px, 5vw, 60px);
     }
+
     #work .horizontal-wrapper .workli .bottom_img {
         width: 80vw;
     }
 
     #work .horizontal-wrapper .workli .top .button {
         flex-direction: row;
+
     }
 
+    #work .horizontal-wrapper .workli .top .button .buttons a {
+        font-size: 14px;
+        width: clamp(98px, 5vw, 112px);
+    }
+    #work .horizontal-wrapper .workli .top .button2{
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 600px) {
