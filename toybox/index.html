@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="A shopping mall selling interesting and fun toys and miscellaneous goods">
+    <meta name="keywords" content="Shopping, miscellaneous goods, stationery">
+    <meta name="author" content="kim ye seul">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toybox</title>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/c6b80521aa.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main_style.css">
+
+</head>
+
+<body>
+    <!-- 메인비주얼 텍스트 호버 제외하고  옆에서 들어오게
+-->
+
+<div class="bg"></div>
+
+    <div class="wrap">
+        <header>
+            <div class="top">
+                <h1><a href="#"><img src="./accet/header_logo.png" alt="toybox"></a></h1>
+            </div><!-- //.top -->
+            <nav class="bottom">
+                <ul class="gnb">
+                    <li><a href="#">BEST</a></li>
+                    <li><a href="#">NEW</a></li>
+                    <li><a href="#">SALE</a></li>
+                    <li><a href="#">TOPIC</a></li>
+                    <li><a href="#">EVENT</a></li>
+                </ul><!-- //.gnb -->
+                <div class="icon inner">
+                    <div class="ham_menu">
+                        <button class="ham">
+                            <i class="fa-solid fa-bars"></i>
+                            <!-- <i class="fa-solid fa-xmark"></i> -->
+                        </button>  
+                        <div class="side">
+                            <ul class="snb">
+                                <li><a href="#"><h4>문구</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>필기구</span></a></li>
+                                        <li><a href="#"><span>노트/다이어리</span></a></li>
+                                        <li><a href="#"><span>파일/바인더</span></a></li>
+                                        <li><a href="#"><span>스티커/데코</span></a></li>
+                                        <li><a href="#"><span>사무용품</span></a></li>
+                                        <li><a href="#"><span>미술/디자인</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><h4>토이</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>캐릭터 피규어</span></a></li>
+                                        <li><a href="#"><span>블록/조립</span></a></li>
+                                        <li><a href="#"><span>보드게임</span></a></li>
+                                        <li><a href="#"><span>인형</span></a></li>
+                                        <li><a href="#"><span>RC/전자 장난감</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><h4>푸드</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>간식</span></a></li>
+                                        <li><a href="#"><span>음료</span></a></li>
+                                        <li><a href="#"><span>즉석식품</span></a></li>
+                                        <li><a href="#"><span>수입식품</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><h4>취미</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>DIY/공예</span></a></li>
+                                        <li><a href="#"><span>악기/음악</span></a></li>
+                                        <li><a href="#"><span>카메라</span></a></li>
+                                        <li><a href="#"><span>스포츠</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><h4>잡화</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>생활용품</span></a></li>
+                                        <li><a href="#"><span>굿즈</span></a></li>
+                                        <li><a href="#"><span>문구 잡화</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><h4>가구</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>책상/의자</span></a></li>
+                                        <li><a href="#"><span>수납/정리 용품</span></a></li>
+                                        <li><a href="#"><span>침구류</span></a></li>
+                                        <li><a href="#"><span>조명</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><h4>의류</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>상의</span></a></li>
+                                        <li><a href="#"><span>하의</span></a></li>
+                                        <li><a href="#"><span>아우터</span></a></li>
+                                        <li><a href="#"><span>신발</span></a></li>
+                                        <li><a href="#"><span>액세서리</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><h4>디지털 가전</h4></a>
+                                    <ul class="sub">
+                                        <li><a href="#"><span>모바일 액세서리</span></a></li>
+                                        <li><a href="#"><span>컴퓨터/주변기기</span></a></li>
+                                        <li><a href="#"><span>오디오/음향</span></a></li>
+                                        <li><a href="#"><span>게임/콘솔</span></a></li>
+                                        <li><a href="#"><span>가전제품</span></a></li>
+                                    </ul>
+                                </li>
+                            </ul><!-- snb -->
+                        </div><!-- //.side  -->
+                    </div> <!-- //.ham_menu -->     
+                    <div class="icon_right">
+                        <a href="#" class="search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#" class="cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href="#" class="user"><i class="fa-solid fa-user"></i></a>
+                    </div><!-- //.icon_right -->
+                </div><!-- //.icon -->
+            </nav><!-- //.bottom -->
+        </header>
+
+        <div class="main_visual">
+            <!-- Swiper -->
+            <div class="swiper main_slide">
+                <div class="swiper-wrapper main_slide_wrapper">
+                    <div class="swiper-slide one"><a href="#">
+                            <div class="inner"><span>Special days<br>New arrivals</span>
+                                <p>스페셜 데이즈 신상 노트 & 다이어리 출시</p>
+                            </div>
+                        </a></div>
+                    <div class="swiper-slide two"><a href="#">
+                            <div class="inner"><span>바쁜 아침에 필요한 건</span>
+                                <p>시리얼볼 특가존 오픈</p>
+                            </div>
+                        </a></div>
+                    <div class="swiper-slide three"><a href="#">
+                            <div class="inner"><span>어딜 가나 함께하니까</span>
+                                <p>폰꾸용품 총집합!</p>
+                            </div>
+                        </a></div>
+                    <div class="swiper-slide four"><a href="#">
+                            <div class="inner"><span>BRAND WEEK<br>토이박스 X 몰랑이 </span>
+                                <p>내 장바구니에 쏙 들어온 몰랑이</p>
+                            </div>
+                        </a></div>
+                </div>
+                <div class="pager_all">
+                    <div class="autoplay">
+                        <div class="play"><i class="fa-solid fa-play"></i></div>
+                        <div class="pause"><i class="fa-solid fa-pause"></i></div>
+                    </div><!-- //.autoplay -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div><!--swiper main_slide  -->
+
+        </div><!-- //.main_visual -->
+
+        <a class="topbtn" href="#"><i class="fa-solid fa-chevron-up"></i>TOP</a>
+        <section class="ran_box">
+            <div class="inner">
+                <div class="list">
+                    <div class="tit">
+                        <h3>오늘의 랜덤 박스</h3>
+                        <span>추천상품</span>
+                    </div><!-- //.tit -->
+                    <ul class="ran">
+                        <li><a href="#">
+                                <div><span>실바니안 패밀리</span>
+                                    <h4>베이비 포레스트 블라인드백</h4>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <div><span>BANDAINAMCO</span>
+                                    <h4>헬로키티 다마고치</h4>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <div><span>달콤단</span>
+                                    <h4>수제 포춘쿠키 10개입</h4>
+                                </div>
+                            </a></li>
+                    </ul><!-- //.ran -->
+                    <ul class="more">
+                        <li><a href="#">
+                                <div><span>도토리숲</span>
+                                    <h4>토토로의 행운석</h4>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <div><span>오브룸</span>
+                                    <h4>아이아이 블루투스 스피커 미니</h4>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <div><span>로보타임</span>
+                                    <h4>DIY 북눅 플로럴 코너</h4>
+                                </div>
+                            </a></li>
+                    </ul><!-- more -->
+                </div>
+                <div class="more_button">
+                    더보기
+                </div><!-- //.more_button -->
+            </div><!-- inner -->
+        </section><!-- //.ran_box -->
+
+
+        <section class="new">
+            <div class="con_box">
+                <div class="inner">
+                    <div class="tit">
+                        <p>12/31 NEW ARRIVAL</p>
+                        <h3>신상품</h3>
+                    </div>
+                    <div class="swiper new_slide">
+                        <div class="swiper-wrapper new_slide_wrapper">
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="top_button sale">sale</div>
+                                    <div class="slide_img one"></div>
+                                    <div class="txt">
+                                        <h5>치이카와 안경 거치대</h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <em>16,300원</em>
+                                                <p>11,300원</p>
+                                            </div><!-- //.price -->
+                                            <strong>44%</strong>
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="top_button best">best</div>
+                                    <div class="slide_img two"></div>
+                                    <div class="txt">
+                                        <h5>소방벌 키링</h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <p>22,000원</p>
+                                            </div><!-- //.price -->
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="top_button new">new</div>
+                                    <div class="slide_img three"></div>
+                                    <div class="txt">
+                                        <h5>쿵야 모니터 피규어</h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <p>14,900원</p>
+                                            </div><!-- //.price -->
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="slide_img four"></div>
+                                    <div class="txt">
+                                        <h5>되면 한다 티셔츠</h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <p>20,000원</p>
+                                            </div><!-- //.price -->
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="top_button new">new</div>
+                                    <div class="slide_img five"></div>
+                                    <div class="txt">
+                                        <h5>이고진 3단 요가매트</h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <em>51,300원</em>
+                                                <p>37,900원</p>
+                                            </div><!-- //.price -->
+                                            <strong>26%</strong>
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="top_button new">new</div>
+                                    <div class="slide_img six"></div>
+                                    <div class="txt">
+                                        <h5>[ 노플라스틱선데이 x… </h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <p>21,000원</p>
+                                            </div><!-- //.price -->
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="top_button sale">sale</div>
+                                    <div class="slide_img seven"></div>
+                                    <div class="txt">
+                                        <h5>크림 세이호 키링</h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <p>10,000원</p>
+                                            </div><!-- //.price -->
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide"><a href="#">
+                                    <div class="top_button best">best</div>
+                                    <div class="slide_img eight"></div>
+                                    <div class="txt">
+                                        <h5>Couch Potato Wa… </h5>
+                                        <div class="bottom">
+                                            <div class="price">
+                                                <p>29,000원</p>
+                                            </div><!-- //.price -->
+                                        </div><!-- //bottom -->
+                                    </div><!-- //.txt -->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-next-prev">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div><!-- //.inner -->
+
+            </div><!-- //.con_box -->
+        </section><!-- //.new -->
+
+
+
+        <section class="ranking">
+            <div class="inner">
+                <div class="rank_tit">
+                    <div class="tit">
+                        <h3>What's in the box</h3>
+                        <span>1월 2일 16:38 기준</span>
+                    </div>
+                    <div class="more"><a href="#">더보기</a></div>
+                </div><!-- rank_tit -->
+                <div class="rank_list">
+                    <ul class="left">
+                        <li><a href="#">
+                                <p>1 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>MU:DS</span>
+                                    <h6>단청 기계식 키보드 키캡</h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>2 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>유니버스존</span>
+                                    <h6>안경만두 인형 키링</h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>3 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>SUSIM</span>
+                                    <h6>쓰레기봉투 에어팟 케이스</h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>4 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>MU:DS</span>
+                                    <h6>반가사유상 미니어처 </h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>5 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>Miniduct</span>
+                                    <h6>오예스 맥세이프 보조배터리</h6>
+                                </div>
+                            </a></li>
+                    </ul><!-- 1_5 -->
+                    <ul class="right">
+                        <li><a href="#">
+                                <p>6 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>TROZK Beeper</span>
+                                    <h6>파워뱅크 메시지 보조배터리</h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>7 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>DNA Design Studio</span>
+                                    <h6>스크래치 맵 여행</h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>8 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>OIMU</span>
+                                    <h6>복 키링</h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>9 </p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>SUSIM</span>
+                                    <h6>치아 에어팟 케이스</h6>
+                                </div>
+                            </a></li>
+                        <li><a href="#">
+                                <p>10</p>
+                                <div class="ran_img"></div>
+                                <div class="txt"><span>퍼글러</span>
+                                    <h6>우가부가 화이트</h6>
+                                </div>
+                            </a></li>
+                    </ul><!-- 6_10 -->
+                </div><!-- rank_list -->
+            </div><!-- //.inner -->
+        </section><!-- //.ranking -->
+        <section class="topic">
+            <div class="inner">
+                <h3>Best Topic</h3>
+                <ul class="topic_list">
+                    <li><a href="#">
+                            <div class="user">
+                                <div class="profil"></div><span>@Dang_gg</span>
+                            </div><!-- user -->
+                            <div class="pic"></div>
+                            <div class="txt">
+                                <div class="tit">
+                                    <h5># 크리스마스_안대</h5>
+                                    <div class="heart">
+                                        <i class="fa-solid fa-heart"></i><em>3,531</em>
+                                    </div><!-- heart -->
+                                </div><!-- tit -->
+                                <div class="bottom">
+                                    <p>생일 선물로 받았는데, 따뜻하고 잠이 잘 와요. 이걸 끼고 자면 무슨 소원도 다 이뤄질 것 같은 기분이… </p>
+                                </div>
+                            </div>
+                        </a></li>
+
+                    <li><a href="#">
+                            <div class="user">
+                                <div class="profil"></div><span>@dslddlo</span>
+                            </div><!-- user -->
+                            <div class="pic"></div>
+                            <div class="txt">
+                                <div class="tit">
+                                    <h5># 게_머리핀</h5>
+                                    <div class="heart">
+                                        <i class="fa-solid fa-heart"></i><em>1,330</em>
+                                    </div><!-- heart -->
+                                </div><!-- tit -->
+                                <div class="bottom">
+                                    <p>이것만 있으면 나도 10명 중 100명이 돌아보는 패셔니스타 가능 </p>
+                                </div>
+                            </div>
+                        </a></li>
+
+                    <li><a href="#">
+                            <div class="user">
+                                <div class="profil"></div><span>@_cooo08</span>
+                            </div><!-- user -->
+                            <div class="pic"></div>
+                            <div class="txt">
+                                <div class="tit">
+                                    <h5># 산리오</h5>
+                                    <div class="heart">
+                                        <i class="fa-solid fa-heart"></i><em>874</em>
+                                    </div><!-- heart -->
+                                </div><!-- tit -->
+                                <div class="bottom">
+                                    <p>랜덤 상품인데 원하던 캐릭터들을 뽑아서 너무 좋아요...나도 이제 할로윈 즐길 수 있다</p>
+                                </div>
+                            </div>
+                        </a></li>
+
+                    <li><a href="#">
+                            <div class="user">
+                                <div class="profil"></div><span>@babaobabo</span>
+                            </div><!-- user -->
+                            <div class="pic"></div>
+                            <div class="txt">
+                                <div class="tit">
+                                    <h5># 실바니안</h5>
+                                    <div class="heart">
+                                        <i class="fa-solid fa-heart"></i><em>2,330</em>
+                                    </div><!-- heart -->
+                                </div><!-- tit -->
+                                <div class="bottom">
+                                    <p>아기 토끼 보슬보슬말랑말랑<br><br></p>
+                                </div>
+                            </div>
+                        </a></li>
+
+                    <li><a href="#">
+                            <div class="user">
+                                <div class="profil"></div><span>@nazura</span>
+                            </div><!-- user -->
+                            <div class="pic"></div>
+                            <div class="txt">
+                                <div class="tit">
+                                    <h5># AZURA</h5>
+                                    <div class="heart">
+                                        <i class="fa-solid fa-heart"></i><em>667</em>
+                                    </div><!-- heart -->
+                                </div><!-- tit -->
+                                <div class="bottom">
+                                    <p>아주라 Y2K 시리즈 진짜 귀엽게 잘나왔어요 뭘 뽑아도 후회하지 않는다 </p>
+                                </div>
+                            </div>
+                        </a></li>
+                </ul><!-- topic_list -->
+            </div><!-- //.inner -->
+        </section><!-- //.topic -->
+        <section class="event">
+            <div class="inner">
+                <h3>EVENT TODAY </h3>
+                <div class="event_slider swiper">
+                    <ul class="slide swiper-wrapper">
+                        <li class="slider1 swiper-slide"><a href="#"></a></li>
+                        <li class="slider2 swiper-slide"><a href="#"></a></li>
+                        <li class="slider3 swiper-slide"><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="bottom">
+                    <div class="pager">
+                        <span>1</span>
+                        <div class="bar"><img src="./accet/line.svg">
+                            <div class="now"><img src="./accet/now.svg"></div>
+                        </div>
+                        <p>3</p>
+                    </div>
+                    <div class="pr_next_stop">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <i class="fa-solid fa-pause"></i>
+                    </div>
+                </div><!-- bottom -->
+            </div><!-- //.inner -->
+        </section><!-- //.event -->
+        <footer>
+            <div class="inner">
+                <div class="logo"><img src="./accet/header_logo.png" alt="toybox"></div>
+                <div class="middle">
+                    <div class="middle_txt">
+                        <p>(주) 토이박스</p>
+                        <p>대표 : 김예슬 | (01101) 서울특별시 서초구 서초대로 101길 29 <br>
+                            사업자등록번호 : 192-49-12909 [사업자정보확인] <br>
+                            통신판매업신고 : 제 2024-서울서초-0102호</p>
+                    </div>
+                    <div class="sns">
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="right">
+                    <span>고객센터</span>
+                    <strong>1277-9011</strong>
+                    <p>평일 09:00 ~ 18:00 / 점심시간 12:30 ~ 13:30 <br>
+                        E-mail : customer@toybox.co.kr</p>
+                    <div class="Qbutton">
+                        <a href="#">
+                            <div class="ask">1:1문의</div>
+                        </a>
+                        <a href="#">
+                            <div class="FAQ">FAQ</div>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- //.inner -->
+            <div class="copy">©2025 TOYBOX CO., ALL RIGHTS RESERVED.</div>
+        </footer>
+
+    </div><!-- //.wrap -->
+
+</body>
+
+</html>

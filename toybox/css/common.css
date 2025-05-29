@@ -1,0 +1,252 @@
+@charset "utf-8";
+/* 
+    폰트, 변수선언(컬러)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #333;
+    font-family: var(--Noto-Sans)
+}
+
+:root {
+    --main-color: #FF5A01;
+    --main-orange-l: #FFE3C2;
+    --main-pink: #FB6161;
+    --main-green: #44DCB7;
+    --main-green-l: #D9F5BF;
+    --main-blue: #5690FD;
+    --main-blue-l: #95E3FF;
+    --main-red: #FF2D2D;
+    --w-color-1: #333;
+    --w-color-2: #fff;
+    --Noto-Sans: "Noto Sans", sans-serif;
+    --Poppins: "Poppins", sans-serif;
+}
+
+.inner {
+    width: 1360px;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    height: 148px;
+}
+
+header .top {
+    width: 100%;
+    height: 90px;
+    background: var(--main-orange-l);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .top a{
+    height: 100%;
+    width: 100%;
+}
+
+header .bottom {
+    width: 100%;
+    height: 58px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+header .bottom .gnb {
+    width: 500px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+header .bottom .gnb li {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    flex: 1;
+}
+
+header .bottom .gnb li:hover {
+    color: var(--main-color);
+}
+
+header .bottom .gnb a {
+    display: block;
+    width: 100%;
+    height: 58px;
+    line-height: 58px;
+}
+
+header .bottom .icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .bottom .icon .ham {
+    font-size: 24px;
+    color: var(--main-color);
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+header .bottom .icon i.fa-xmark{
+    font-size: 26px;
+}
+
+header .bottom .icon .icon_right {
+    font-size: 24px;
+    display: flex;
+    gap: 50px;
+    color: var(--main-color);
+}
+
+header .bottom .icon .ham_menu {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 80;
+}
+
+
+/* SNB */
+.bg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+.bg.on{
+    z-index: 60;
+}
+.side {
+    /* display: none; */
+    position: absolute;
+    left: 0;
+    top: 54px;
+    z-index: 120;
+    border-radius: 0px 30px 30px 30px;
+    border: 2px solid #333;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    /* overflow: hidden; */
+    background: #fff;
+    display: none;
+}
+
+.side .snb {
+    display: flex;
+    flex-direction: column;
+    height: 640px;
+    padding: 87px 50px;
+    align-items: flex-start;
+    position: relative;
+}
+
+.side .snb>li {
+    width: 100%;
+    height: 100%;
+
+}
+
+.side .snb>li:hover{
+    color: var(--main-color);
+}
+
+.side .snb>li>a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.side .snb h4 {
+    width: 150px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.side .snb>li .sub {
+    position: absolute;
+    left: 200px;
+    top: -2px;
+    width: 300px;
+    height: 644px;
+    background: #fff;
+    border-radius: 0px 30px 30px 0px;
+    border: 2px solid #333;
+    border-left: 0;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    padding: 87px 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+}
+
+.side .snb>li:hover .sub, .side .snb>li .sub:hover  {
+    display: flex;
+}
+
+.side .snb .sub>li {
+    width: 100%;
+    height: 10%;
+}
+
+
+.side .snb .sub>li>a {
+    width: 100%;
+    height: 100%;
+}
+
+.side .snb .sub>li span{
+    font-size: 16px;
+    font-weight: 500;
+    color: #777;
+}
+
+.side .snb .sub>li:hover span{
+    color: #333;
+}
+
+/* topbutton */
+
+.topbtn {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 90px;
+    background-color: rgba(152, 152, 152, 0.50);
+    color: var(--w-color-2);
+    font-size: 16px;
+    width: 700;
+    gap: 4px;
+    cursor: pointer;
+    position: fixed;
+    right: 130px;
+    top: 800px;
+    display: none;
+    transition: .8s;
+    z-index: 1000;
+}
+
+.topbtn:hover {
+    background-color: rgba(152, 152, 152, 1);
+}
