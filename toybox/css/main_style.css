@@ -37,7 +37,7 @@
 }
 
 .main_visual .main_slide .swiper-slide span {
-    color: var(--w-color-1);
+    color: var(--w-color-2);
     font-size: 70px;
     font-weight: 700;
     line-height: 70px;
@@ -45,17 +45,22 @@
     transform: translateX(-100%);
 }
 
+
 .main_visual .main_slide .swiper-slide-active span {
     transform: translateX(0);
 }
 
 .main_visual .main_slide .swiper-slide p {
-    color: var(--w-color-1);
+    color: var(--w-color-2);
     font-size: 28px;
     font-weight: 500;
     line-height: 28px;
     transition: .8s;
     transform: translateX(-100%);
+}
+
+.main_slide .swiper-slide:nth-child(4) a .inner span,.main_slide .swiper-slide:nth-child(4) a .inner p {
+    color: var(--w-color-1);
 }
 
 .main_visual .main_slide .swiper-slide-active p {
@@ -479,8 +484,12 @@
 }
 
 .new .con_box .inner .new_slide .new_slide_wrapper .txt h5 {
+    width: 100%;
     font-size: 26px;
     font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .new .con_box .inner .new_slide .new_slide_wrapper .txt .bottom {
@@ -561,10 +570,10 @@
 }
 
 .ranking .inner .rank_tit .more {
-    width: 100px;
+
     height: 40px;
 
-    padding: 8 25;
+    padding: 8px 25px;
 
     border-radius: 30px;
     background: var(--main-color);
@@ -697,7 +706,6 @@
     width: 100%;
     height: 760px;
     display: flex;
-    padding-bottom: 60px;
     position: relative;
     z-index: 2;
 }
@@ -869,6 +877,8 @@
 .event {
     width: 100%;
     height: 718px;
+    position: relative;
+    z-index: 2;
 }
 
 .event .inner {
@@ -983,16 +993,24 @@
 .event .inner .bottom .pr_next_stop i {
     width: 30px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     color: #555;
     cursor: pointer;
 }
 
-.event .inner .bottom .pr_next_stop i:last-child {
+.event .inner .bottom .pr_next_stop .stopplay {
     width: 32px;
-    font-size: 25px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.event .inner .bottom .pr_next_stop .stopplay i{
+    display: none;
+}
+.event .inner .bottom .pr_next_stop .stopplay i.on{
+    display: block;
+}
 
 
 
