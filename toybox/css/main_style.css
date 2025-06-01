@@ -34,10 +34,11 @@
     flex-direction: column;
     gap: 30px;
     justify-content: center;
+    color: var(--w-color-2);
 }
 
 .main_visual .main_slide .swiper-slide span {
-    color: var(--w-color-2);
+
     font-size: 70px;
     font-weight: 700;
     line-height: 70px;
@@ -51,7 +52,6 @@
 }
 
 .main_visual .main_slide .swiper-slide p {
-    color: var(--w-color-2);
     font-size: 28px;
     font-weight: 500;
     line-height: 28px;
@@ -59,8 +59,8 @@
     transform: translateX(-100%);
 }
 
-.main_slide .swiper-slide:nth-child(4) a .inner span,.main_slide .swiper-slide:nth-child(4) a .inner p {
-    color: var(--w-color-1);
+.color-white {
+    color: var(--w-color-1) !important;
 }
 
 .main_visual .main_slide .swiper-slide-active p {
@@ -704,10 +704,10 @@
 /* topic */
 .topic {
     width: 100%;
-    height: 760px;
     display: flex;
     position: relative;
     z-index: 2;
+    margin-bottom: 20vh;
 }
 
 .topic .inner {
@@ -970,13 +970,14 @@
     height: 23px;
     position: relative;
     cursor: pointer;
-    transition: .5s;
+    transition: .8s;
 }
 
 .event .inner .bottom .pager .now {
     position: absolute;
     left: -2px;
     top: 2px;
+    transition: left 0.5s ease;
 }
 
 .event .inner .bottom .pager p {
@@ -1005,10 +1006,12 @@
     justify-content: center;
     align-items: center;
 }
-.event .inner .bottom .pr_next_stop .stopplay i{
+
+.event .inner .bottom .pr_next_stop .stopplay i {
     display: none;
 }
-.event .inner .bottom .pr_next_stop .stopplay i.on{
+
+.event .inner .bottom .pr_next_stop .stopplay i.on {
     display: block;
 }
 
