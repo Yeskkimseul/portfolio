@@ -68,9 +68,9 @@ $(function () {
   let newSwiper = new Swiper(".new_slide", {
     loop: true,
     speed: 5000,
-    // autoplay: {
-    //   delay: 3000,
-    // },
+    autoplay: {
+      delay: 3000,
+    },
     slidesPerView: 'auto',
     slidesPerGroup: 4,
     spaceBetween: 30,
