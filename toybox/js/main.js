@@ -68,12 +68,12 @@ $(function () {
   let newSwiper = new Swiper(".new_slide", {
     loop: true,
     speed: 5000,
-    autoplay: {
-      delay: 3000,
-    },
-    slidesPerView: 4,
+    // autoplay: {
+    //   delay: 3000,
+    // },
+    slidesPerView: 'auto',
     slidesPerGroup: 4,
-    spaceBetween: 0,
+    spaceBetween: 30,
     navigation: {
       nextEl: ".button-next-prev .fa-chevron-right",
       prevEl: ".button-next-prev .fa-chevron-left",
