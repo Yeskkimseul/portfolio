@@ -70,6 +70,51 @@ ScrollTrigger.matchMedia({
   },
 });
 
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+});
+
+function setHorizontalScroll() {
+  const sections = gsap.utils.toArray("#work .section");
+  const totalWidth = sections.length * window.innerWidth;
+
+  gsap.set("#work .horizontal-wrapper", {
+    width: totalWidth + "px",
+  });
+
+  ScrollTrigger.create({
+    id: "work-horizontal",
+    trigger: "#work",
+    start: "top top",
+    end: () => "+=" + totalWidth,
+    scrub: true,
+    pin: true,
+    anticipatePin: 1,
+  });
+}
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.getById("work-horizontal")?.kill();
+  setHorizontalScroll();
+  ScrollTrigger.refresh();
+});
+
+ScrollTrigger.matchMedia({
+  "(max-width: 1000px)": function () {
+    // Kill horizontal scroll
+    ScrollTrigger.getById("work-horizontal")?.kill();
+
+    // Reset transform
+    const wrapper = document.querySelector("#work .horizontal-wrapper");
+    if (wrapper) wrapper.style.transform = "none";
+  },
+
+  "(min-width: 1001px)": function () {
+    // Re-create horizontal scroll
+    setHorizontalScroll();
+  }
+});
+
   // 🎨 커스텀 커서
   const cursor2 = document.querySelector(".custom_cursor2");
   document.addEventListener("mousemove", (e) => {

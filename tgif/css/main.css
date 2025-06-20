@@ -328,6 +328,7 @@ h1 a img{
 .benefit .con .benef_list li .txt p {
     font-size: 18px;
     font-weight: 400;
+    line-height: 150%;
 }
 
 
@@ -494,7 +495,7 @@ h1 a img{
 
 .brand_story .bottom p {
     color: var(--w-color-2);
-    line-height: 1.4em;
+    line-height: 150%;
     font-size: 22px;
     font-weight: 300;
     text-align: center;
