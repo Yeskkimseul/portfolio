@@ -29,17 +29,20 @@ $(function () {
 
 
 
-
+  let horizontalScrollTrigger;
 
   // matchMedia 호출 함수화
   function applyMatchMedia() {
     ScrollTrigger.matchMedia({
-      "(min-width: 1001px)": function () {
+      "(min-width: 1031px)": function () {
         setHorizontalScroll();
       },
 
-      "(max-width: 1000px)": function () {
-        ScrollTrigger.getById("work-horizontal")?.kill();
+      "(max-width: 1030px)": function () {
+        if (horizontalScrollTrigger) {
+          horizontalScrollTrigger.kill(); // 완전 제거
+          horizontalScrollTrigger = null;
+        }
         const wrapper = document.querySelector("#work .horizontal-wrapper");
         if (wrapper) wrapper.style.transform = "none";
       }
@@ -50,10 +53,18 @@ $(function () {
   applyMatchMedia();
 
   // resize 시에도 재적용
+  let resizeTimeout;
+
   window.addEventListener("resize", () => {
-    ScrollTrigger.getById("work-horizontal")?.kill(); // 이전 설정 제거
-    applyMatchMedia(); // 미디어쿼리에 따라 다시 설정
-    ScrollTrigger.refresh(); // 트리거 새로고침
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (horizontalScrollTrigger) {
+        horizontalScrollTrigger.kill(); // 정확히 제거
+        horizontalScrollTrigger = null;
+      }
+      applyMatchMedia();
+      ScrollTrigger.refresh();
+    }, 300); // debounce 처리로 안정성 증가
   });
 
   function setHorizontalScroll() {
@@ -62,13 +73,22 @@ $(function () {
 
     if (!hor || !workWrapper) return;
 
+    //기존트리거 제거
+    const existingTrigger = ScrollTrigger.getById("work-horizontal");
+    if (existingTrigger) {
+      existingTrigger.kill();
+    }
+
     const scrollLength = workWrapper.scrollWidth - window.innerWidth;
+    const totalPanels = workWrapper.querySelectorAll(".panel").length;
+    const panelWidth = window.innerWidth; // 또는 panel.clientWidth
+    const totalScrollLength = totalPanels * panelWidth;
 
     gsap.set(workWrapper, {
-      width: `${workWrapper.scrollWidth}px`, // 안정적 처리
+      width: `${totalScrollLength}px`
     });
 
-    gsap.to(workWrapper, {
+    horizontalScrollTrigger = gsap.to(workWrapper, {
       x: () => -scrollLength,
       ease: "none",
       scrollTrigger: {
