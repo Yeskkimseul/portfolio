@@ -33,87 +33,66 @@ $(function () {
 
   // ⭐ 가로 스크롤 설정
 ScrollTrigger.matchMedia({
-  // 데스크탑 (1001px 이상)
-  "(min-width: 1001px)": function() {
-    const hor = document.querySelector("#work");
-    const workWrapper = document.querySelector("#work .horizontal-wrapper");
-
-    const scrollLength = workWrapper.scrollWidth - window.innerWidth;
-
-    gsap.to(workWrapper, {
-      x: () => -scrollLength,
-      ease: "none",
-      scrollTrigger: {
-        id: "work-horizontal",
-        trigger: hor,
-        start: "top top",
-        end: () => "+=" + scrollLength,
-        pin: true,
-        scrub: 2.5,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onEnter: () => isHorizontalScrolling = true,
-        onLeave: () => isHorizontalScrolling = false,
-        onLeaveBack: () => isHorizontalScrolling = false,
-      },
-    });
+  "(min-width: 1001px)": function () {
+    setHorizontalScroll();
   },
 
-  // 모바일 또는 태블릿 (1000px 이하)
-  "(max-width: 1000px)": function() {
-    // 필요하다면 cleanup 처리나 클래스 제거 등을 여기에 작성
-    ScrollTrigger.getById("work-horizontal")?.kill(); // 기존 horizontal scroll 제거
-
-    // 선택적으로 스타일 리셋
-    const workWrapper = document.querySelector("#work .horizontal-wrapper");
-    if (workWrapper) workWrapper.style.transform = "none";
-  },
+  "(max-width: 1000px)": function () {
+    ScrollTrigger.getById("work-horizontal")?.kill();
+    const wrapper = document.querySelector("#work .horizontal-wrapper");
+    if (wrapper) wrapper.style.transform = "none";
+  }
 });
 
 window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+});
+
+window.addEventListener("load", () => {
   ScrollTrigger.refresh();
 });
 
 function setHorizontalScroll() {
-  const sections = gsap.utils.toArray("#work .section");
-  const totalWidth = sections.length * window.innerWidth;
+  const hor = document.querySelector("#work");
+  const workWrapper = document.querySelector("#work .horizontal-wrapper");
 
-  gsap.set("#work .horizontal-wrapper", {
-    width: totalWidth + "px",
+  if (!hor || !workWrapper) return;
+
+  const scrollLength = workWrapper.scrollWidth - window.innerWidth;
+
+  gsap.set(workWrapper, {
+    width: `${workWrapper.scrollWidth}px`, // 안정적 처리
   });
 
-  ScrollTrigger.create({
-    id: "work-horizontal",
-    trigger: "#work",
-    start: "top top",
-    end: () => "+=" + totalWidth,
-    scrub: true,
-    pin: true,
-    anticipatePin: 1,
+  gsap.to(workWrapper, {
+    x: () => -scrollLength,
+    ease: "none",
+    scrollTrigger: {
+      id: "work-horizontal",
+      trigger: hor,
+      start: "top top",
+      end: () => `+=${scrollLength}`,
+      scrub: 2.5,
+      anticipatePin: 1,
+      pin: true,
+      invalidateOnRefresh: true,
+      onEnter: () => isHorizontalScrolling = true,
+      onLeave: () => isHorizontalScrolling = false,
+      onLeaveBack: () => isHorizontalScrolling = false,
+    },
   });
 }
 
+window.addEventListener("load", () => {
+  ScrollTrigger.refresh(); // 모든 이미지, 레이아웃 로딩 후 리프레시
+});
+
 window.addEventListener("resize", () => {
   ScrollTrigger.getById("work-horizontal")?.kill();
-  setHorizontalScroll();
   ScrollTrigger.refresh();
 });
 
-ScrollTrigger.matchMedia({
-  "(max-width: 1000px)": function () {
-    // Kill horizontal scroll
-    ScrollTrigger.getById("work-horizontal")?.kill();
 
-    // Reset transform
-    const wrapper = document.querySelector("#work .horizontal-wrapper");
-    if (wrapper) wrapper.style.transform = "none";
-  },
-
-  "(min-width: 1001px)": function () {
-    // Re-create horizontal scroll
-    setHorizontalScroll();
-  }
-});
 
   // 🎨 커스텀 커서
   const cursor2 = document.querySelector(".custom_cursor2");
