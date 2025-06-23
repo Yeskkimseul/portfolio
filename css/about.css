@@ -613,14 +613,14 @@ section {
 #work .horizontal-wrapper {
     display: flex;
     width: max-content;
-    padding: 0 20vw;
+    padding: 0 10vw;
     /* width: calc(39.6vw * 4); */
     gap: 2vw;
     /*   margin-left: 2vw; */
     will-change: transform;
     transform-style: preserve-3d;
-     transform: translate3d(0, 0, 0); 
-     will-change: transform;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
 }
 
 #work .horizontal-wrapper .workli {

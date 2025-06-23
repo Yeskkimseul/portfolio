@@ -16,7 +16,7 @@ $(function () {
       horizontalTrigger.pin === workWrapper &&
       horizontalTrigger.isActive;
 
-      const isHorizontalComplete = horizontalTrigger && horizontalTrigger.progress === 1;
+    const isHorizontalComplete = horizontalTrigger && horizontalTrigger.progress === 1;
 
     if (isScrolling || scrollCooldown || isPinned) return;
 
@@ -31,66 +31,65 @@ $(function () {
 
 
 
-  // ⭐ 가로 스크롤 설정
-ScrollTrigger.matchMedia({
-  "(min-width: 1001px)": function () {
-    setHorizontalScroll();
-  },
+  // matchMedia 호출 함수화
+  function applyMatchMedia() {
+    ScrollTrigger.matchMedia({
+      "(min-width: 1001px)": function () {
+        setHorizontalScroll();
+      },
 
-  "(max-width: 1000px)": function () {
-    ScrollTrigger.getById("work-horizontal")?.kill();
-    const wrapper = document.querySelector("#work .horizontal-wrapper");
-    if (wrapper) wrapper.style.transform = "none";
+      "(max-width: 1000px)": function () {
+        ScrollTrigger.getById("work-horizontal")?.kill();
+        const wrapper = document.querySelector("#work .horizontal-wrapper");
+        if (wrapper) wrapper.style.transform = "none";
+      }
+    });
   }
-});
 
-window.addEventListener("resize", () => {
-  ScrollTrigger.refresh();
-});
+  // 초기 적용
+  applyMatchMedia();
 
-window.addEventListener("load", () => {
-  ScrollTrigger.refresh();
-});
-
-function setHorizontalScroll() {
-  const hor = document.querySelector("#work");
-  const workWrapper = document.querySelector("#work .horizontal-wrapper");
-
-  if (!hor || !workWrapper) return;
-
-  const scrollLength = workWrapper.scrollWidth - window.innerWidth;
-
-  gsap.set(workWrapper, {
-    width: `${workWrapper.scrollWidth}px`, // 안정적 처리
+  // resize 시에도 재적용
+  window.addEventListener("resize", () => {
+    ScrollTrigger.getById("work-horizontal")?.kill(); // 이전 설정 제거
+    applyMatchMedia(); // 미디어쿼리에 따라 다시 설정
+    ScrollTrigger.refresh(); // 트리거 새로고침
   });
 
-  gsap.to(workWrapper, {
-    x: () => -scrollLength,
-    ease: "none",
-    scrollTrigger: {
-      id: "work-horizontal",
-      trigger: hor,
-      start: "top top",
-      end: () => `+=${scrollLength}`,
-      scrub: 2.5,
-      anticipatePin: 1,
-      pin: true,
-      invalidateOnRefresh: true,
-      onEnter: () => isHorizontalScrolling = true,
-      onLeave: () => isHorizontalScrolling = false,
-      onLeaveBack: () => isHorizontalScrolling = false,
-    },
+  function setHorizontalScroll() {
+    const hor = document.querySelector("#work");
+    const workWrapper = document.querySelector("#work .horizontal-wrapper");
+
+    if (!hor || !workWrapper) return;
+
+    const scrollLength = workWrapper.scrollWidth - window.innerWidth;
+
+    gsap.set(workWrapper, {
+      width: `${workWrapper.scrollWidth}px`, // 안정적 처리
+    });
+
+    gsap.to(workWrapper, {
+      x: () => -scrollLength,
+      ease: "none",
+      scrollTrigger: {
+        id: "work-horizontal",
+        trigger: hor,
+        start: "top top",
+        end: () => `+=${scrollLength}`,
+        scrub: 2.5,
+        anticipatePin: 1,
+        pin: true,
+        invalidateOnRefresh: true,
+        onEnter: () => isHorizontalScrolling = true,
+        onLeave: () => isHorizontalScrolling = false,
+        onLeaveBack: () => isHorizontalScrolling = false,
+      },
+    });
+  }
+
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh(); // 모든 이미지, 레이아웃 로딩 후 리프레시
   });
-}
-
-window.addEventListener("load", () => {
-  ScrollTrigger.refresh(); // 모든 이미지, 레이아웃 로딩 후 리프레시
-});
-
-window.addEventListener("resize", () => {
-  ScrollTrigger.getById("work-horizontal")?.kill();
-  ScrollTrigger.refresh();
-});
 
 
 
@@ -390,7 +389,7 @@ window.addEventListener("resize", () => {
   const menubg = document.querySelector('.menu_bg');
   const menuul = document.querySelector('.menu_ul');
   const menuItems = document.querySelectorAll('.gnb li');
-  
+
   function closeMenu() {
     menubg.classList.remove('on');
     menuul.classList.remove('on');
@@ -399,13 +398,13 @@ window.addEventListener("resize", () => {
       li.classList.remove('show');
     });
   }
-  
+
   // 메뉴 버튼 클릭 시 toggle
   menu.addEventListener('click', function (e) {
     if (menuul.contains(e.target)) return;
     const isOpen = menuul.classList.contains('on');
 
-  
+
     if (!isOpen) {
       menubg.classList.add('on');
       menuul.classList.add('on');
@@ -415,16 +414,16 @@ window.addEventListener("resize", () => {
       menuItems.forEach((li, i) => {
         setTimeout(() => {
           li.classList.add('show');
-        }, i * 100); 
+        }, i * 100);
       });
-  
+
     } else {
       closeMenu();
       menuop.classList.add('on');
     }
-    
+
   });
-  
+
   // 메뉴 항목 클릭 시 메뉴 닫기
   menuul.addEventListener('click', function (e) {
     const target = e.target.closest('a');
@@ -433,7 +432,7 @@ window.addEventListener("resize", () => {
       menuop.classList.add('on');
     }
   });
-  
+
   // 배경 클릭 시 메뉴 닫기
   menubg.addEventListener('click', function (e) {
     // menuul 내부 클릭 시는 무시
